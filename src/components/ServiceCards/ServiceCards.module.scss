@@ -1,0 +1,52 @@
+@use "@/assets/styles/abstracts" as *;
+
+.categorySection {
+  display: grid;
+  grid-template-columns: auto;
+  width: 100%;
+  padding-bottom: 80rem;
+  border-bottom: 1rem solid rgba($background-tones-white, 0.12);
+  margin-bottom: 80rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  
+  .cardsContainer {
+    display: grid;
+    grid-template-columns: auto;
+    
+    > *:not(:last-child) {
+      padding-bottom: 80rem;
+      border-bottom: 1rem solid rgba($background-tones-white, 0.12);
+      margin-bottom: 80rem;
+    }
+    
+    // Remove border from the last card in the container
+    > *:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    margin-bottom: 40rem;
+    padding-bottom: 40rem;
+    
+    .cardsContainer {
+      > *:not(:last-child) {
+        padding-bottom: 40rem;
+        margin-bottom: 40rem;
+      }
+      
+      > *:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+}

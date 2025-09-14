@@ -1,0 +1,69 @@
+@use "@/assets/styles/abstracts" as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8rem;
+  gap: 8rem;
+  position: relative;
+  height: 584rem;
+
+  background: $container-default;
+  border-radius: 24rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1rem;
+    border-radius: 24rem;
+    background: linear-gradient(138.98deg,
+        rgba($text-secondary, 0.12) 0%,
+        rgba($text-primary, 0) 50%,
+        rgba($text-secondary, 0.12) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: rgba($background-tones-grey, 0.08);
+    border-radius: 16rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1rem;
+      border-radius: 16rem;
+      background: linear-gradient(238deg,
+          rgba($text-secondary, 0.2) 0.67%,
+          rgba($text-primary, 0.024) 49.97%,
+          rgba($text-secondary, 0.2) 99.27%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      z-index: 1;
+      pointer-events: none;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    width: 370rem;
+    height: 332rem;
+
+    .image {
+      width: 354rem;
+      height: 316rem;
+    }
+  }
+}

@@ -1,0 +1,125 @@
+@use "@/assets/styles/abstracts" as *;
+
+.container {
+  width: 100%;
+  padding: 0 48rem;
+  @media screen and (max-width: 700px) {
+    padding: 0;
+  }
+}
+.sliderContainer {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  min-height: 88rem;
+  margin-bottom: 24rem;
+  .sliderTrack {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    gap: 1.5rem;
+    height: auto;
+  }
+
+  .doubleSliderContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 1rem;
+    min-height: calc(88rem * 2 + 1rem);
+  }
+
+  .sliderRow, .sliderTrack {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    height: auto;
+    min-height: 88rem;
+    animation: slideRightPingPong var(--animation-duration, 60s) linear infinite;
+
+    &.sliderRowReverse {
+      animation: slideLeftPingPong var(--animation-duration, 60s) linear infinite;
+    }
+
+    .sliderItem {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+      width: 237.33rem;
+      height: 88rem;
+
+      .partnerLogo {
+        width: 100%;
+        height: 100%;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+    }
+
+  }
+
+  @media screen and (max-width: 700px) {
+    margin: 16rem 0;
+    .sliderTrack {
+      gap: 8rem;
+    }
+
+    .sliderRow, .sliderTrack {
+      .sliderItem {
+        width: 152rem;
+        height: 88rem;
+      }
+
+    }
+  }
+}
+
+@keyframes slideRightPingPong {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideLeftPingPong {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  50% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}

@@ -1,0 +1,71 @@
+@use "@/assets/styles/abstracts" as *;
+
+.otherWorks {
+    display: flex;
+    flex-direction: column;
+    gap: 32rem;
+    padding: 40rem 0;
+    width: 100%;
+
+    .otherWorksHeader {
+        display: flex;
+        flex-direction: column;
+        gap: 8rem;
+        width: 100%;
+
+        .sectionTitle {
+            width: 100%;
+            font-family: 'Azeret';
+            @include font(11, 300, 16);
+            color: rgba($text-secondary, 0.6);
+        }
+
+        .sectionSubtitle {
+            font-family: 'Spezia Serif Condensed B';
+            @include font(64, 400, 72);
+            letter-spacing: -1.5rem;
+            color: $text-primary;
+        }
+    }
+
+    .cardsRow {
+        display: flex;
+        flex-direction: row;
+        gap: 24rem;
+        width: 100%;
+
+        .small {
+            width: 485.33rem;
+            height: 528rem;
+        }
+
+        .extrasmall {
+            width: 485rem;
+            height: 376rem;
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        gap: 32rem;
+        padding: 40rem 0;
+
+        .otherWorksHeader {
+            .sectionSubtitle {
+                @include font(34, 400, 40);
+                letter-spacing: -1rem;
+            }
+        }
+
+        .cardsRow {
+            flex-direction: column;
+            gap: 24rem;
+
+            .small,
+            .extrasmall {
+                width: 370rem;
+                height: 424rem;
+            }
+        }
+
+    }
+}

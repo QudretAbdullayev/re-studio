@@ -1,0 +1,218 @@
+@use "@/assets/styles/abstracts" as *;
+
+.progressBar {
+  background: linear-gradient(90deg, #B5A000 0%, #AE0001 50.48%, #05AD00 75.24%, #1216B7 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rem;
+  z-index: 9999;
+  transform-origin: left;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 24rem 0 40rem;
+  .header {
+    .texts {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 24rem 0 40rem;
+      gap: 8rem;
+      .title {
+        font-family: 'Azeret', monospace;
+        @include font(11,300,16);
+        text-transform: uppercase;
+        color: rgba($text-secondary, 0.6);
+      }
+
+      .description {
+        font-family: 'Spezia Serif Condensed B';
+        @include font(80,400,80);
+        letter-spacing: -3rem;
+        color: $text-primary;
+      }
+    }
+  }  
+  .innerContainer{
+    display: flex;
+    gap: 24rem;
+    padding: 40rem 0 80rem;
+    position: relative;
+    .left {
+      overflow: hidden;
+      width: 358rem;
+      position: sticky;
+      top: 104rem;
+      align-self: flex-start;
+      .sidebarLink {
+        display: flex;
+        align-items: center;
+        padding: 8rem 0;
+        cursor: pointer;
+
+        .buttonText {
+          font-family: 'Azeret', monospace;
+          @include font(11,300,16);
+          text-transform: uppercase;
+          background: linear-gradient(270deg, $text-primary -20.69%, rgba($text-secondary, 0.6) 94.83%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+      }
+      .activeSidebarLink {
+        display: flex;
+        align-items: center;
+        padding: 8rem 0;
+        cursor: pointer;
+        overflow: hidden;
+        gap: 8rem;
+        
+        .arrow {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 16rem;
+          height: 16rem;
+          animation: slideInFromLeft 0.8s ease forwards;
+          transform: translateX(-100%);
+          opacity: 0;
+          svg{
+            width: 16rem;
+            height: 16rem;
+          }
+        }
+        .buttonText{
+          font-family: 'Azeret', monospace;
+          @include font(11,300,16);
+          text-transform: uppercase;
+          color: $text-primary;
+          animation: slideTextRight 0.6s ease forwards;
+          transform: translateX(-24rem);
+        }
+      }
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      gap: 64rem;
+      width: 1122rem;
+      .rich > *:last-child {
+        margin-bottom: 0;
+      }
+      .section {
+        display: flex;
+        flex-direction: column;
+        gap: 16rem;
+
+        h1 {
+          font-family: 'Spezia Serif Condensed B';
+          @include font(56, 400, 56);
+          letter-spacing: -1.5rem;
+          color: $text-primary;
+        }
+
+        p, li {
+          font-family: 'Spezia', sans-serif;
+          @include font(16, 400, 20);
+          letter-spacing: -0.5rem;
+          color: rgba($text-secondary, 0.6);
+          line-height: 20rem;
+          font-family: "Spezia";
+          margin-bottom: 12rem;
+        }
+        li{
+          list-style: square;
+          margin-left: 20rem;
+          font-family: "Spezia";
+
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 700px) {
+    padding-top: 24rem;
+    .header {
+      .texts {
+        padding-top: 16rem;
+        .description {
+          @include font(48,400,52);
+          letter-spacing: -1.5rem;
+        }
+      }
+    }  
+    .innerContainer{
+      padding-top: 0;
+      padding-bottom: 0;
+      .left {
+        display: none;
+      }
+      .right {
+        gap: 40rem;
+        width: 370rem;
+        .section {
+          h1 {
+            @include font(34, 400, 40);
+            letter-spacing: -1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideTextRight {
+  0% {
+    transform: translateX(-24rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInArrow {
+  0% {
+    left: -24rem;
+    opacity: 0;
+  }
+  100% {
+    left: -24rem;
+    opacity: 1;
+  }
+}
+
+@keyframes slideInText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-20%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,231 @@
+@use "@/assets/styles/abstracts" as *;
+
+.cookieBox {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16rem;
+  gap: 12rem;
+
+  position: fixed;
+  width: 240rem;
+  height: 152rem;
+  bottom: 28rem;
+  right: 48rem;
+  z-index: 100;
+
+  background: rgba(120, 120, 128, 0.08);
+  backdrop-filter: blur(26rem);
+  border-radius: 24rem;
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1rem;
+    border-radius: inherit;
+    background: linear-gradient(111.86deg, rgba($white, 0.12) 0%, rgba($white, 0) 50%, rgba($white, 0.12) 100%);
+
+
+    background: linear-gradient(101.8deg, rgba($background-tones-white, 0.12) 5.68%, rgba($background-tones-grey, 0.08) 49.74%, rgba($background-tones-white, 0.12) 93.79%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 1;
+    pointer-events: none;
+    backdrop-filter: blur(26rem)
+  }
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem;
+    gap: 4rem;
+    position: relative;
+    z-index: 1003;
+    width: 208rem;
+    height: 76rem;
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+
+    .heading {
+      width: 208rem;
+      height: 16rem;
+
+      font-family: 'Spezia';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13rem;
+      line-height: 16rem;
+      letter-spacing: -0.5rem;
+
+      color: #FFFFFF;
+
+      flex: none;
+      order: 0;
+      align-self: stretch;
+      flex-grow: 0;
+    }
+
+    .subheading {
+      width: 208rem;
+      height: 56rem;
+
+      font-family: 'Spezia';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 11rem;
+      line-height: 14rem;
+      letter-spacing: -0.5rem;
+
+      color: rgba(235, 235, 245, 0.6);
+
+      flex: none;
+      order: 1;
+      align-self: stretch;
+      flex-grow: 0;
+
+      .privacyLink {
+        display: inline-block;
+
+        .privacyContent {
+          span {
+            color: #FFFFFF;
+            text-decoration: underline;
+            transition: opacity 0.2s ease;
+          }
+        }
+      }
+    }
+  }
+
+  .buttonGroup {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0rem;
+    gap: 12rem;
+
+    width: 208rem;
+
+    .reject {
+      width: 98rem;
+      cursor: pointer;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 8rem 24rem;
+      gap: 8rem;
+      background: rgba(120, 120, 128, 0.08);
+      border-radius: 96rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      z-index: 1003;
+
+      .buttonContent {
+        vertical-align: middle;
+        font-family: 'Azeret';
+        @include font(11, 400, 16);
+        text-transform: uppercase;
+        color: #FFFFFF;
+        display: inline-block;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 1rem;
+        border-radius: inherit;
+        background: linear-gradient(101.8deg, rgba($background-tones-white, 0.12) 5.68%, rgba($background-tones-grey, 0.08) 49.74%, rgba($background-tones-white, 0.12) 93.79%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 1;
+        pointer-events: none;
+      }
+    }
+
+    .accept {
+      width: 98rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 8rem 24rem;
+      gap: 8rem;
+      background: #FFFFFF;
+      border-radius: 96rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      flex: none;
+      order: 1;
+      flex-grow: 1;
+      position: relative;
+      z-index: 1003;
+
+      .buttonContent {
+        font-family: 'Azeret';
+        font-style: normal;
+        @include font(11, 400, 16);
+        text-transform: uppercase;
+        vertical-align: middle;
+        color: #000000;
+      }
+    }
+  }
+  @media (max-width: 700px) {
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(0rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fadeOutScale {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.8) translateY(0rem);
+  }
+}

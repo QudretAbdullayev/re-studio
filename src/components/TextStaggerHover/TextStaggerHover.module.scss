@@ -1,0 +1,57 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  @media screen and (max-width: 700px) {
+    overflow: initial;
+  }
+}
+
+.active,
+.hidden {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  vertical-align: bottom;
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
+}
+
+.active {
+  z-index: 1;
+}
+
+.hidden {
+  z-index: 2;
+}
+
+.char {
+  display: inline-block;
+  white-space: pre;
+  vertical-align: bottom;
+}
+
+.icon {
+  margin-right: 0.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visibleNone{
+  width: max-content;
+  visibility: hidden;
+  position: relative;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media screen and (max-width: 700px) {
+    visibility: visible;
+  }
+}

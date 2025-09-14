@@ -1,0 +1,64 @@
+@use "@/assets/styles/abstracts" as *;
+
+.backButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8rem 0;
+    gap: 8rem;
+    height: 32rem;
+    text-decoration: none;
+    width: max-content;
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg{
+        width: 16rem;
+        height: 16rem;
+        color: $background-tones-grey;
+        margin-right: 8rem;
+      }
+    }
+
+    .backText {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 16rem;
+      font-family: 'Azeret', monospace;
+      @include font(11,300,16);
+      text-transform: uppercase;
+      color: rgba($text-secondary, 0.6);
+      // background: linear-gradient(
+      //   270deg,
+      //   $text-primary -20.69%,
+      //   rgba($text-secondary, 0.6) 94.83%
+      // );
+      // -webkit-background-clip: text;
+      // -webkit-text-fill-color: transparent;
+      // background-clip: text;
+    }
+    &:hover{
+      .icon{
+        svg{
+          color: $text-primary;
+        }
+      }
+      .backText{
+        color: $text-primary;
+        background: transparent;
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial;
+        background-clip: initial;
+      }
+    }
+}
+
+.back{
+  display: none;
+  @media screen and (max-width: 700px) {
+    display: flex;
+    
+  }
+}

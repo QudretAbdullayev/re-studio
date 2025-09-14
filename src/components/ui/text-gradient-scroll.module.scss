@@ -1,0 +1,68 @@
+@use "@/assets/styles/abstracts" as *;
+
+.textContainer {
+  position: relative;
+  display: flex;
+  margin: 0;
+  flex-wrap: wrap;
+  font-family: 'Spezia Serif Condensed B';
+  @include font(32, 400, 40);
+  color: $text-secondary;
+  letter-spacing: -1rem;
+}
+
+.word {
+  position: relative;
+  margin-right: 8rem;
+}
+
+.wordBackground {
+  position: absolute;
+  opacity: 0.1;
+  color: inherit;
+}
+
+.wordForeground {
+  transition: all 0.5s ease;
+  color: inherit;
+}
+
+.char {
+  position: relative;
+}
+
+.opacityNone {
+  position: absolute;
+  opacity: 0;
+  color: inherit;
+}
+
+.opacitySoft {
+  position: absolute;
+  opacity: 0.5;
+  color: inherit;
+}
+
+.opacityMedium {
+  position: absolute;
+  opacity: 0.7;
+  color: inherit;
+}
+
+.charForeground {
+  transition: all 0.5s ease;
+  color: inherit;
+}
+
+// Responsive adjustments
+@media screen and (max-width: 700px) {
+  .textContainer {
+    @include font(24, 400, 32);
+  }
+  
+  .word {
+    margin-right: 6rem;
+    margin-top: 6rem;
+  }
+}
+

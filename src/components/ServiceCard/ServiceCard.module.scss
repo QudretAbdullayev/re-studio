@@ -1,0 +1,79 @@
+@use "@/assets/styles/abstracts" as *;
+
+.serviceCard {
+  width: 100%;
+  display: flex;
+  gap: 24rem;
+
+  .image {
+    width: 485rem;
+  }
+
+  .title {
+    width: 461rem;
+    margin-left: 24rem;
+  }
+
+  .list {
+    width: 486rem;
+  }
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    
+    .image {
+      width: 370rem;
+    }
+
+    .title {
+      width: 370rem;
+      margin-left: 0;
+      margin-top: 0;
+    }
+    .list {
+      width: 370rem;
+    }
+  }
+}
+
+.serviceCardSecond {
+  display: flex;
+  gap: 279rem;
+
+  .serviceCardSecondContent {
+    .title {
+      width: 716rem;
+      margin-right: 24rem;
+    }
+
+    .list {
+      width: 740rem;
+      margin-top: 40rem;
+    }
+  }
+
+  .image {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    width: 485rem;
+  }
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    gap: 24rem;
+    .serviceCardSecondContent {
+      order: 2;
+      width: 370rem;
+      .title {
+       margin-left: 0;
+       width: 370rem;
+      }
+      .list {
+        width: 370rem;
+      }
+    }
+    .image {
+      order: 1;
+      width: 370rem;
+    }
+  }
+}

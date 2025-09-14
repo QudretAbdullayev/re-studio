@@ -1,0 +1,469 @@
+@use "@/assets/styles/abstracts" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24rem 0 120rem;
+  gap: 40rem;
+  width: 100%;
+
+  .texts {
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+    width: 740rem;
+
+    .title {
+      font-family: "Azeret";
+      @include font(11, 300, 16);
+      text-transform: uppercase;
+      color: rgba($text-secondary, 0.6);
+    }
+
+    .description {
+      font-family: "Spezia Serif Condensed B";
+      @include font(80, 400, 80);
+      letter-spacing: -3rem;
+      color: $text-primary;
+    }
+  }
+
+  .formContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+
+    .subContainer {
+      display: flex;
+      align-items: flex-start;
+      gap: 24rem;
+      padding: 24rem 24rem 24rem 32rem;
+      background: rgba($background-tones-grey, 0.08);
+      backdrop-filter: blur(52rem);
+      -webkit-backdrop-filter: blur(52rem);
+      border-radius: 24rem;
+      position: relative;
+      width: 100%;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 1rem;
+        border-radius: 24rem;
+        background: linear-gradient(103.46deg, rgba(0, 0, 0, 0.2) -18.01%, rgba(255, 255, 255, 0) 59.82%, rgba(0, 0, 0, 0.2) 137.64%);
+
+
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .sectionSubtitle {
+        font-family: "Spezia Serif Condensed B";
+        @include font(34, 400, 40);
+        letter-spacing: -1rem;
+        color: $text-primary;
+        width: 453rem;
+      }
+
+      .sectionSubtitleInput {
+        padding: 8rem 0;
+      }
+
+      .sectionSubtitleButton {
+        align-self: center;
+      }
+
+      .segmentTab {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16rem 24rem;
+        gap: 8rem;
+        background: $container-default;
+        box-shadow: inset 3rem 4rem 4rem 0 rgba($black, 0.08);
+
+        border-radius: 1000rem;
+        position: relative;
+        cursor: pointer;
+        
+
+        &:hover {
+          box-shadow: inset -3rem -4rem 4rem 0 rgba($black, 0.08);
+        }
+
+        &:hover::before {
+          background: linear-gradient(138.98deg, rgba(0, 0, 0, 0.1) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 100%);
+          content: "";
+          position: absolute;
+          inset: 0;
+          padding: 1rem;
+          border-radius: 1000rem;
+          -webkit-mask: linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        .text {
+          height: 16rem;
+
+          font-family: "Azeret";
+          @include font(11, 300, 16);
+          text-transform: uppercase;
+          color: $text-primary;
+          letter-spacing: 0;
+          // background: linear-gradient(0deg,
+          //     #ffffff 18.75%,
+          //     rgba(235, 235, 245, 0.6) 65.63%);
+          // -webkit-background-clip: text;
+          // -webkit-text-fill-color: transparent;
+          // background-clip: text;
+          // text-fill-color: transparent;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          padding: 1rem;
+          border-radius: 1000rem;
+          background: linear-gradient(138.98deg, rgba(0, 0, 0, 0.1) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 100%);
+
+          -webkit-mask: linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          z-index: 1;
+          pointer-events: none;
+        }
+      }
+
+      .segmentTabSelected {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16rem 24rem;
+        gap: 8rem;
+        background: $background-black;
+        box-shadow: inset 3rem 4rem 4rem 0 rgba($white, 0.2);
+        border-radius: 1000rem;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+          box-shadow: inset -3rem -4rem 4rem 0rem  rgba($white, 0.2);
+        }
+
+        .text {
+          font-family: "Azeret";
+          font-weight: 300;
+          font-size: 11rem;
+          line-height: 16rem;
+          letter-spacing: 0;
+          text-transform: uppercase;
+          color: $text-white;
+          // background: linear-gradient(0deg, #000000 18.75%, #000000 65.63%);
+          // -webkit-background-clip: text;
+          // -webkit-text-fill-color: transparent;
+          // background-clip: text;
+          // text-fill-color: transparent;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          padding: 1rem;
+          border-radius: 1000rem;
+          background: linear-gradient(138.98deg, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.5) 100%);
+
+
+          -webkit-mask: linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          z-index: 1;
+          pointer-events: none;
+        }
+      }
+
+      .inputBox {
+        flex-grow: 1;
+
+        .inputWrapper {
+          position: relative;
+          border-radius: 16rem;
+          background: $container-default;
+          display: flex;
+          flex-direction: column;
+
+          &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            padding: 1rem;
+            border-radius: 16rem;
+            background: linear-gradient(103.46deg,
+                rgba($text-secondary, 0.32) -18.01%,
+                rgba($text-primary, 0) 59.82%,
+                rgba($text-secondary, 0.12) 137.64%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box,
+              linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: 1;
+            pointer-events: none;
+          }
+
+          &:focus-within {
+            border: 1rem solid $border-inverse;
+
+            &::before {
+              display: none;
+            }
+          }
+
+          .input::placeholder {
+            color: rgba($text-secondary, 0.6);
+            font-family: "Spezia";
+            @include font(28, 400, 36);
+            leading-trim: NONE;
+            letter-spacing: -1rem;
+          }
+
+          .input {
+            resize: none;
+            height: 100%;
+            width: 100%;
+            padding: 46rem 24rem 18rem;
+            overflow: hidden;
+            color: rgba($text-secondary, 0.6);
+            font-family: "Spezia";
+            @include font(28, 400, 36);
+            leading-trim: NONE;
+            letter-spacing: -1rem;
+            border: none;
+            outline: none;
+            background-color: transparent;
+          }
+        }
+
+        .industryOptions,
+        .taskOptions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8rem;
+        }
+
+        .error {
+          font-family: "Azeret";
+          @include font(11, 300, 16);
+          text-transform: uppercase;
+          color: $text-negative;
+        }
+        .errorButton {
+          padding-top: 16rem;
+        }
+        .errorInput {
+          padding-top: 12rem;
+        }
+      }
+
+      .informationInputs {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        gap: 24rem;
+      }
+
+      .contactInputs {
+        display: flex;
+        gap: 24rem;
+      }
+    }
+
+    .subContainerError {
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 1rem;
+        border-radius: 24rem;
+        background: linear-gradient(102.01deg, $text-negative -7.77%, rgba($text-negative, 0.38) 53.15%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 1;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .buttonContainer {
+    padding-top: 32rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .consultingButton {
+      padding: 32rem 40rem;
+      border-radius: 1000rem;
+      background: $background-black;
+      position: relative;
+      width: max-content;
+
+      // &::before {
+      //   content: "";
+      //   position: absolute;
+      //   inset: 0;
+      //   padding: 1rem;
+      //   border-radius: 1000rem;
+      //   background: linear-gradient(138.98deg,
+      //       rgba($black, 0.5) 0%,
+      //       rgba($white, 0) 50%,
+      //       rgba($black, 0.5) 100%);
+      //   -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      //     linear-gradient(#fff 0 0);
+      //   -webkit-mask-composite: xor;
+      //   mask-composite: exclude;
+      //   z-index: 1;
+      //   pointer-events: none;
+      // }
+
+      .consultingButtonSpan {
+        height: 32rem;
+        width: 100%;
+        span {
+          font-family: "Azeret";
+          @include font(24, 400, 32);
+          text-transform: uppercase;
+          color: $text-white;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    padding: 8rem 0 40rem;
+    gap: 40rem;
+
+    .texts {
+      gap: 8rem;
+      width: 370rem;
+
+      .title {
+        padding-top: 8rem;
+      }
+
+      .description {
+        @include font(48, 400, 52);
+        letter-spacing: -1.5rem;
+      }
+    }
+
+    .formContainer {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8rem;
+
+      .subContainer {
+        flex-direction: column;
+        gap: 16rem;
+        padding: 16rem;
+
+        .sectionSubtitleButton {
+          align-self: flex-start;
+        }
+
+        .sectionSubtitleInput {
+          padding: 0;
+        }
+
+        .sectionSubtitle {
+          @include font(28, 400, 32);
+          letter-spacing: -0.5rem;
+          width: 100%;
+        }
+
+        .inputBox {
+          width: 100%;
+
+          .inputWrapper {
+            .input::placeholder {
+              @include font(16, 400, 20);
+              letter-spacing: 0.5rem;
+            }
+
+            .textarea {
+              resize: none;
+            }
+
+            .input {
+              padding: 16rem;
+              @include font(16, 400, 20);
+              letter-spacing: -0.5rem;
+            }
+          }
+
+          .errorInput {
+            padding: 8rem 0;
+          }
+
+        }
+
+        .informationInputs {
+          display: flex;
+          flex-direction: column;
+          gap: 8rem;
+          width: 100%;
+        }
+
+        .contactInputs {
+          flex-direction: column;
+          gap: 8rem;
+          width: 100%;
+        }
+      }
+    }
+
+    .buttonContainer {
+      padding: 32rem 0 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .consultingButton {
+        padding: 24rem 0rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .consultingButtonSpan {
+          z-index: 3;
+          position: relative;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          span {
+            @include font(20, 400, 25);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@use "@/assets/styles/abstracts" as *;
+
+.container {
+  section {
+    margin-bottom: 120rem;
+    
+    h2 {
+      font-family: 'Spezia Serif Condensed B';
+      @include font(48, 400, 56);
+      color: $text-secondary;
+      text-align: center;
+      margin-bottom: 40rem;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    section {
+      margin-bottom: 80rem;
+      
+      h2 {
+        @include font(36, 400, 44);
+        margin-bottom: 32rem;
+      }
+    }
+  }
+}

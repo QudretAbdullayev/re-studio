@@ -1,0 +1,52 @@
+@use "@/assets/styles/abstracts" as *;
+
+.loadingButton {
+    margin: 80rem 0 40rem 0;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12rem 24rem;
+    border-radius: 96rem;
+    background: transparent;
+    color: $text-secondary;
+    font-family: 'Azeret', monospace;
+    @include font(16, 400, 24);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120rem;
+    min-height: 48rem;
+    width: max-content;
+    align-self: center;
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 1rem;
+        border-radius: 24rem;
+        background: linear-gradient(101.8deg, rgba($background-tones-white, 0.12) 5.68%, rgba($background-tones-grey, 0.08) 49.74%, rgba($background-tones-white, 0.12) 93.79%);
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    // &:hover:not(:disabled) {
+    //     border-color: rgba($text-secondary, 0.4);
+    //     background: rgba($text-secondary, 0.05);
+    // }
+
+    .shimmerText {
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+
+        --base-color: #{rgba($text-secondary, 0.4)};
+        --base-gradient-color: #{$text-secondary};
+    }
+}

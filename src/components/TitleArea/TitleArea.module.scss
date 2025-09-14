@@ -1,0 +1,35 @@
+  @use "@/assets/styles/abstracts" as *;
+
+  .texts {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8rem;
+      width: 100%;
+      padding-top: 80rem;
+
+      .title {
+          width: 100%;
+          font-family: "Azeret", monospace;
+          @include font(11, 300, 16);
+          text-align: center;
+          text-transform: uppercase;
+          color: rgba($text-secondary, 0.6);
+      }
+
+      .description {
+          width: 572rem;
+          font-family: "Spezia Serif Condensed B";
+          @include font(34, 400, 40);
+          text-align: center;
+          letter-spacing: -1rem;
+          color: $text-primary;
+      }
+
+      @media screen and (max-width: 700px) {
+          padding-top: 24rem;
+          .description{
+            width: 370rem;
+          }
+      }
+  }

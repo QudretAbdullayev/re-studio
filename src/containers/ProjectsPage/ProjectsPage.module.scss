@@ -1,0 +1,43 @@
+@use "@/assets/styles/abstracts" as *;
+
+.projectsPage{
+    margin-bottom: 40rem;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80rem 24rem;
+}
+
+.big{
+    width: 1504rem;
+    height: 768rem;
+}
+
+.medium {
+  width: 995rem;
+  height: 744rem;
+}
+
+.small {
+  width: 485.33rem;
+  height: 528rem;
+}
+
+.extrasmall {
+  width: 485rem;
+  height: 376rem;
+}
+
+@media screen and (max-width: 700px) {
+    .container{
+        gap: 24rem;
+    }
+  .big,
+  .medium,
+  .small,
+  .extrasmall {
+    width: 370rem;
+    height: 424rem;
+  }
+}

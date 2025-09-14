@@ -1,0 +1,199 @@
+@use "@/assets/styles/abstracts" as *;
+
+.container {
+  .row {
+    padding: 80rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40rem;
+  }
+
+  .texts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8rem;
+
+    .sectionSubtitle {
+      font-family: 'Spezia Serif Condensed B';
+      @include font(64, 400, 68);
+      letter-spacing: -1.5rem;
+      color: rgba($text-primary, 1);
+    }
+
+    .sectionDescription {
+      font-family: 'Spezia';
+      @include font(14, 400, 20);
+      letter-spacing: -0.5rem;
+      color: rgba($text-secondary, 0.6);
+
+      a {
+        color: $text-primary;
+        display: inline-block;
+        text-decoration: underline;
+
+        span {
+          span {
+            vertical-align: baseline;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .title {
+      font-family: 'Azeret';
+      @include font(11, 300, 16);
+      text-transform: uppercase;
+      color: rgba($text-secondary, 0.6);
+    }
+
+    .description {
+      font-family: 'Spezia Serif Condensed B';
+      @include font(34, 400, 40);
+      letter-spacing: -1rem;
+      color: rgba($text-primary, 1);
+
+      &.big {
+        @include font(88, 400, 88);
+        letter-spacing: -3rem;
+      }
+    }
+
+    .desc {
+      width: 400rem;
+    }
+  }
+
+  .sectionSubtitle {
+    font-family: 'Spezia Serif Condensed B';
+    @include font(64, 400, 68);
+    letter-spacing: -1.5rem;
+    color: rgba($text-primary, 1);
+  }
+
+  .socialMediaInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12rem;
+
+    .socialMediaLinks {
+      display: flex;
+      flex-direction: row;
+      gap: 32rem;
+
+      .socialMediaLink {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 4rem 0;
+        gap: 8rem;
+        height: 24rem;
+
+
+        .socialMediaName {
+          display: inline-block;
+
+          span {
+            display: inline-block;
+            font-family: 'Azeret';
+            @include font(11, 200, 16);
+            text-transform: uppercase;
+            // color: transparent;
+            // -webkit-text-fill-color: transparent;
+            // background-image: linear-gradient(259.26deg, rgba($text-primary, 1) 13.84%, rgba($text-secondary, 0.6) 62.62%);
+            // background-repeat: no-repeat;
+            // background-size: 100% 100%;
+            // background-position: 0 0;
+            // background-clip: text;
+            // -webkit-background-clip: text;
+            color: $text-primary;
+            text-decoration: underline;
+
+            span {
+              background-color: inherit;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .locationInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 24rem;
+
+    .sectionDescription {
+      font-family: 'Spezia';
+      @include font(14, 400, 20);
+      letter-spacing: -0.5rem;
+      color: rgba($text-primary, 1);
+
+      a {
+        color: $text-primary;
+        display: inline-block;
+        text-decoration: underline;
+
+        span {
+          span {
+            vertical-align: baseline;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+
+  @media screen and (max-width: 700px) {
+    .row {
+      padding: 40rem 0;
+      grid-template-columns: 1fr;
+      gap: 40rem;
+    }
+
+    .contactInfo {
+      gap: 16rem;
+      padding-top: 8rem;
+    }
+
+    .locationInfo {
+      padding-top: 24rem;
+    }
+
+    .texts {
+      gap: 8rem;
+
+      .sectionSubtitle {
+        @include font(34, 400, 40);
+        letter-spacing: -1rem;
+      }
+
+      .desc {
+        width: 100%;
+      }
+
+      .description {
+        @include font(34, 400, 40);
+        letter-spacing: -1rem;
+
+        &.big {
+          @include font(44, 400, 48);
+          letter-spacing: -1rem;
+        }
+      }
+    }
+
+    .socialMediaInfo {
+      padding-top: 16rem;
+      gap: 8rem;
+
+      .socialMediaLinks {
+        gap: 16rem;
+      }
+    }
+  }
+}

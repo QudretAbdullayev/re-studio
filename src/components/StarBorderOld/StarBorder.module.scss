@@ -1,0 +1,92 @@
+:root {
+  --foreground: 240 10% 3.9%;
+  --background: 0 0% 100%;
+  --muted: 210 40% 96%;
+  --border: 214.3 31.8% 91.4%;
+}
+
+@keyframes star-movement-bottom {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
+}
+
+@keyframes star-movement-top {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100%, 0%);
+    opacity: 0;
+  }
+}
+
+.starBorder {
+  position: relative;
+  display: inline-block;
+  padding: 1px;
+  overflow: hidden;
+  background-color: transparent;
+  border: none;
+  border-radius: 20px;
+}
+
+.starBottom {
+  position: absolute;
+  width: 300%;
+  height: 50%;
+  bottom: -11px;
+  right: -250%;
+  border-radius: 50%;
+  animation: star-movement-bottom linear infinite alternate;
+  z-index: 0;
+  opacity: 0.2;
+}
+
+.starTop {
+  position: absolute;
+  width: 300%;
+  height: 50%;
+  top: -10px;
+  left: -250%;
+  border-radius: 50%;
+  animation: star-movement-top linear infinite alternate;
+  z-index: 0;
+  opacity: 0.2;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  background: linear-gradient(to bottom, 
+    hsl(var(--background) / 0.9), 
+    hsl(var(--muted) / 0.9)
+  );
+  border: 1px solid grey;
+  color: var(--foreground);
+
+}
+
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (max-width: 700px) {
+  .content {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+}

@@ -1,0 +1,15 @@
+@use "@/assets/styles/abstracts" as *;
+
+.title{
+    font-family: "Spezia Serif Condensed B";
+    @include font(80, 400, 96);
+    leading-trim: NONE;
+    letter-spacing: -3rem;
+    padding-bottom: 40rem;
+    color: $text-primary;
+    @media screen and (max-width: 700px) {
+        @include font(56, 400, 56);
+        letter-spacing: -1.5rem;
+        padding-bottom: 24rem;
+    }
+}

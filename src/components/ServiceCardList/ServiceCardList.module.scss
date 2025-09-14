@@ -1,0 +1,116 @@
+@use "@/assets/styles/abstracts" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+  background: rgba($background-tones-grey, 0.08);
+  border-radius: 24rem;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2rem;
+    border-radius: 24rem;
+
+    background: linear-gradient(
+      138.98deg,
+      rgba($background-tones-white, 0.12) 0%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba($background-tones-white, 0.12) 100%
+    );
+
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .textRow {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 24rem;
+    gap: 24rem;
+    border-bottom: 1rem solid rgba($background-tones-white, 0.12);
+    border-radius: 0rem;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  .serviceItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8rem 16rem;
+    width: 48rem;
+    height: 48rem;
+    background: $container-default;
+    border-radius: 12rem;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1rem;
+      border-radius: 12rem;
+      background: linear-gradient(
+        138.98deg,
+        rgba($text-secondary, 0.12) 0%,
+        rgba($text-primary, 0) 50%,
+        rgba($text-secondary, 0.12) 100%
+      );
+
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .title {
+      font-family: "Azeret";
+      @include font(11, 300, 16);
+      text-align: center;
+      text-transform: uppercase;
+      color: rgba($text-secondary, 0.6);
+    }
+    .arrowIcon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg {
+        width: 16rem;
+        height: 16rem;
+        path {
+          stroke: rgba($text-secondary, 0.6);
+        }
+      }
+    }
+  }
+  .description {
+    width: 100%;
+    font-family: "Spezia";
+    @include font(24, 500, 28);
+    letter-spacing: -1rem;
+    color: $text-primary;
+  }
+  @media screen and (max-width: 700px) {
+    .textRow {
+      padding: 16rem;
+      gap: 16rem;
+    }
+
+    .description {
+      width: 274rem;
+      @include font(20, 500, 24);
+    }
+  }
+}

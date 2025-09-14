@@ -1,0 +1,127 @@
+@use "@/assets/styles/abstracts" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 255rem;
+  gap: 40rem;
+  color: $text-primary;
+  height: calc(100vh - 104rem);
+  .header{
+    width: 994rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32rem;
+    .title {
+      font-family: 'Azeret', monospace;
+      @include font(11,300,16);
+      text-align: center;
+      text-transform: uppercase;
+      color: rgba($text-secondary, 0.6);
+    }
+    .errorCode {
+      font-family: 'Spezia Serif Condensed B';
+      @include font(256, 400, 180);
+      text-align: center;
+      letter-spacing: -6rem;
+      color: $text-primary;
+      leading-trim: CAP_HEIGHT;
+    }
+  }
+  .mainTexts {
+    width: 994rem;
+    .description {
+      font-family: 'Spezia Serif Condensed B';
+      @include font(56,400,56);
+      text-align: center;
+      letter-spacing: -1.5rem;
+      color: $text-primary;
+    }
+  }
+
+  .buttonContainer {
+    width: 994rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8rem;
+    padding-bottom: 40rem;
+    .homeButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12rem 24rem;
+      background: $background-black;
+      border-radius: 96rem;
+      @include font(11,400,16);
+      font-family: 'Azeret', monospace;
+      text-transform: uppercase;
+      color: $text-white;
+      cursor: pointer;
+      vertical-align: middle;
+    }
+
+    .reButton {
+      display: flex;
+      align-items: center;
+      padding: 4rem 16rem 4rem 4rem;
+      gap: 8rem;
+      border-radius: 96rem;
+      font-family: 'Azeret', monospace;
+      @include font(11,400,16);
+      text-transform: uppercase;
+      color: $text-primary;
+      cursor: pointer;
+      border: 1rem solid rgba($text-secondary, 0.12);
+      background: rgba($overlay-default, 0.30);
+      backdrop-filter: blur(52rem);
+      -webkit-backdrop-filter: blur(52rem);
+    }
+    .externalIcon {
+      svg{
+        width: 12rem;
+        height: 12rem;
+      }
+    }
+    .reProfile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32rem;
+      height: 32rem;
+      background: $re-background;
+      border-radius: 50%;
+      span{
+        position: relative;
+        width: 19.89rem;
+        height: 12.36rem;
+      }
+    }
+  }
+  @media screen and (max-width: 700px) {
+    padding: 146rem 0 256rem;
+    gap: 32rem;
+    .header{
+      width: 370rem;
+      .errorCode {
+        @include font(152, 400,152);
+        letter-spacing: -4rem;
+      }
+    }
+    .mainTexts {
+      width: 370rem;
+      .description {
+        @include font(34,400,40);
+        letter-spacing: -1rem;
+      }
+    }
+    .buttonContainer {
+      width: 370rem;
+    }
+  }
+}
+

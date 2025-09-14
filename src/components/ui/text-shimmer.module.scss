@@ -1,0 +1,45 @@
+@use "@/assets/styles/abstracts" as *;
+
+.shimmer {
+  position: relative;
+  display: inline-block;
+  
+  // CSS custom properties for theming
+  --base-color: #{rgba($text-secondary, 0.4)};
+  --base-gradient-color: #{$text-secondary};
+  
+  // Create animated gradient background that will be clipped to text
+  background: linear-gradient(
+    90deg,
+    var(--base-color) 0%,
+    var(--base-color) 30%,
+    var(--base-gradient-color) 50%,
+    var(--base-color) 70%,
+    var(--base-color) 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  
+  // Animate the background position
+  animation: shimmer var(--animation-duration, 3s) ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .shimmer {
+    --base-color: #{rgba($text-primary, 0.4)};
+    --base-gradient-color: #{$text-primary};
+  }
+}

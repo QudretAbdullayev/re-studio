@@ -1,0 +1,57 @@
+@use "@/assets/styles/abstracts" as *;
+
+.snackbar {
+    width: 420rem;
+    height: 52rem;
+    padding: 16rem 20rem;
+    display: flex;
+    align-items: center;
+    text-wrap: nowrap;
+    background: rgba($overlay-default, 0.3);
+    border-radius: 32rem;
+    gap: 8rem;
+    font-family: 'Spezia';
+    @include font(16, 400, 20);
+    leading-trim: NONE;
+    letter-spacing: -0.5rem;
+    color: $text-primary;
+    position: fixed;
+    top: 20rem;
+    right: 20rem;
+    z-index: 9999;
+    backdrop-filter: blur(52rem);
+    box-shadow: 0 4rem 12rem rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.3s ease-out;
+    
+    svg {
+        width: 20rem;
+        height: 20rem;
+        color: $text-primary;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 2rem;
+        border-radius: inherit;
+        background-image: linear-gradient(133.59deg, rgba($background-tones-white, 0.12) 0%, rgba($white, 0) 50%, rgba($background-tones-white, 0.12) 100%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 1;
+        pointer-events: none;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

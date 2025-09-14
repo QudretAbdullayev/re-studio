@@ -1,0 +1,165 @@
+@use "@/assets/styles/abstracts" as *;
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  padding: 8rem;
+  gap: 8rem;
+  width: 485.33rem;
+  height: 376rem;
+  background: rgba($background-tones-grey, 0.08);
+  border-radius: 24rem;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1rem;
+    border-radius: 24rem;
+    background: linear-gradient(138.98deg, rgba($secondary-red, 0.9) 0%, rgba($white, 0) 50%, rgba($secondary-yellow, 0.4) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .letsTalk {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40rem;
+    background: rgba($background-tones-grey, 0.08);
+    border-radius: 16rem;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1rem;
+      border-radius: 16rem;
+      background: linear-gradient(138.98deg, rgba($background-tones-white, 0.12) 0%, rgba($white, 0) 50%, rgba($background-tones-white, 0.12) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      width: 100%;
+
+      .title {
+        width: 100%;
+        @include font(11, 400, 16);
+        font-family: "Azeret";
+        color: rgba($text-secondary, 0.6);
+      }
+
+      .contentContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 16rem;
+        width: 100%;
+
+        .mainTitle {
+          width: 100%;
+          font-family: "Spezia Serif Condensed B";
+          @include font(40, 400, 40);
+          letter-spacing: -1rem;
+          color: $text-primary;
+        }
+
+        .description {
+          width: 100%;
+          font-family: "Spezia";
+          @include font(16, 400, 24);
+          letter-spacing: -0.5rem;
+          color: rgba($text-secondary, 0.6);
+        }
+      }
+    }
+
+    .buttonContainer {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 12rem;
+
+      a {
+        width: 142rem;
+        height: 40rem;
+        @include font(11, 400, 16);
+        font-family: "Azeret";
+        border-radius: 96rem;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        cursor: pointer;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          padding: 1rem;
+          border-radius: 96rem;
+          background: linear-gradient(101.8deg, rgba($background-tones-white, 0.12) 5.68%, rgba($background-tones-white, 0.08) 49.74%, rgba($background-tones-white, 0.12) 93.79%);
+          ;
+          -webkit-mask: linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          z-index: 1;
+          pointer-events: none;
+        }
+      }
+
+      .primaryButton {
+        background-color: $background-black;
+        color: $text-white;
+      }
+
+      .secondaryButton {
+        background-color: rgba($background-tones-grey, 0.08);
+        color: $text-primary;
+      }
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    width: 370rem;
+    height: 292rem;
+
+    .letsTalk {
+      padding: 24rem;
+
+      .container {
+
+        .contentContainer {
+          .mainTitle {
+            @include font(34, 400, 34);
+          }
+
+          .description {
+            @include font(16, 400, 20);
+          }
+        }
+      }
+    }
+
+  }
+}

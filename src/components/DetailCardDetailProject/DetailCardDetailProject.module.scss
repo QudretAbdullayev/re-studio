@@ -1,0 +1,93 @@
+@use "@/assets/styles/abstracts" as *;
+
+.detail {
+  .projectInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24rem;
+
+    .metas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4rem 8rem;
+
+      .meta {
+        font-family: "Azeret";
+        @include font(11, 200, 16);
+        color: rgba($text-secondary, 0.6);
+        display: flex;
+        gap: 8rem;
+
+        a {
+          display: inline-block;
+          color: rgba($text-secondary, 0.6);
+
+          span {
+            text-decoration: underline;
+            font-family: "Azeret";
+            @include font(11, 200, 16);
+            color: rgba($text-secondary, 0.6);
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+
+    .summary {
+      font-family: "Spezia Serif Condensed B";
+      font-style: italic;
+      @include font(16, 400, 20);
+      color: $text-primary;
+      height: 200rem;
+    }
+  }
+
+  .visitButton {
+    margin-top: 24rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 24rem;
+    gap: 8rem;
+    width: 142rem;
+    height: 40rem;
+    background: rgba(120, 120, 128, 0.08);
+    border-radius: 96rem;
+    font-family: "Azeret";
+    @include font(11, 400, 16);
+    text-transform: uppercase;
+    color: $text-primary;
+    position: relative !important;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1rem;
+      border-radius: 96rem;
+      background: linear-gradient(138.98deg,
+          rgba($background-tones-white, 0.12) 0%,
+          rgba($white, 0) 50%,
+          rgba($background-tones-white, 0.12) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      z-index: 1;
+      pointer-events: none;
+    }
+  }
+  &::before {
+    content: "";
+    position: static;
+    inset: 0;
+    padding: 0;
+    border-radius: 0;
+    background: initial;
+    -webkit-mask: initial;
+    -webkit-mask-composite: initial;
+    mask-composite: initial;
+    z-index: 0;
+  }
+}

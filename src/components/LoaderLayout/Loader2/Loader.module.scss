@@ -1,0 +1,30 @@
+.screen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+}
+
+.box {
+  background: grey; 
+  color: black;
+  font-size: 16rem;
+  font-family: monospace;
+  padding: 5rem 10rem;
+  border-radius: 40rem;
+  transition: transform 0.5s ease, background 1s ease;
+  &:nth-of-type(2){
+    border-radius: 10rem;
+  }
+}
+
+.up {
+  transform: translateY(-40rem);
+}
+
+.white {
+  background: white;
+}

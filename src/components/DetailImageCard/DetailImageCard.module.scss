@@ -1,0 +1,56 @@
+@use "@/assets/styles/abstracts" as *;
+
+.main {
+    height: 744rem;
+    border-radius: 16rem;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 1rem;
+        border-radius: 16rem;
+        border: 1rem solid;
+        background: linear-gradient(236.87deg, rgba($border-inverse, 0.2) 0%, rgba($background-tones-grey, 0.016) 49.65%, rgba($border-inverse, 0.2) 99.3%);
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 1;
+        pointer-events: none;
+    }
+    img{
+        object-fit: cover;
+    }
+    @media screen and (max-width: 700px) {
+        height: 236rem;
+    }
+}
+.full {
+    width: 1162rem;;
+}
+.half {
+    width: 577rem;
+}
+.textContainer {
+    padding: 96rem 16rem 96rem 585rem;
+    width: 1162rem;
+    .description {
+        width: 561rem;
+        height: max-content;
+        font-family: 'Spezia Serif Condensed B';
+        @include font(28, 400, 32);
+        letter-spacing: -0.5rem;
+        color: $text-primary;
+    }
+    @media screen and (max-width: 700px) {
+        padding: 56rem 16rem;
+        width: 100%;
+        .description {
+            width: 100%;
+        }
+    }
+}

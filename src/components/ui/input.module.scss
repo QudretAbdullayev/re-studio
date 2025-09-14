@@ -1,0 +1,280 @@
+@use "@/assets/styles/abstracts" as *;
+
+.input {
+  outline: none;
+  border: none;
+  padding: 46rem 24rem 18rem;
+  width: 100%;
+  @include font(28, 400, 36);
+  letter-spacing: -1rem;
+  color: $text-primary;
+  background-color: transparent;
+  font-family: Spezia;
+  border-radius: 16rem;
+  position: relative;
+  z-index: 2;
+
+  &::placeholder {
+    font-family: Spezia;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 28rem;
+    line-height: 36rem;
+    letter-spacing: -1rem;
+    color: rgba($text-secondary, 0.6);
+  }
+
+  @media screen and (max-width: 700px) {
+    padding: 24rem 16rem 8rem;
+    @include font(16, 400, 20);
+    letter-spacing: -0.5rem;
+
+    &::placeholder {
+      @include font(16, 400, 20);
+      letter-spacing: -0.5rem;
+    }
+  }
+}
+
+.textarea {
+  resize: none;
+  min-height: 120rem;
+  transition: height 0.2s ease;
+  max-height: 500vh;
+
+  &::placeholder {
+    font-family: Spezia;
+    @include font(28, 400, 36);
+    letter-spacing: -1rem;
+    color: rgba($text-secondary, 0.6);
+  }
+
+  @media screen and (max-width: 700px) {
+    padding: 24rem 16rem 8rem;
+    @include font(16, 400, 20);
+    letter-spacing: -0.5rem;
+
+    &::placeholder {
+      @include font(16, 400, 20);
+      letter-spacing: -0.5rem;
+    }
+  }
+}
+
+.inputContainer {
+  position: relative;
+  border-radius: 16rem;
+  background: $container-default;
+  width: 100%;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1rem;
+    border-radius: 16rem;
+    background: linear-gradient(103.46deg, rgba(0, 0, 0, 0.2) -18.01%, rgba(0, 0, 0, 0) 59.82%, rgba(0, 0, 0, 0.2) 137.64%);
+
+
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &:hover {
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1rem;
+      border-radius: 16rem;
+      background: var(--color-background-tones-white-30, #EBEBF54D);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      z-index: 1;
+      pointer-events: none;
+    }
+  }
+  .customResizer{
+    position: absolute;
+    bottom: 4rem;
+    right: 4rem;
+    svg{
+      width: 16rem;
+      height: 16rem;
+    }
+  }
+
+  &:focus-within {
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1rem;
+      border-radius: 16rem;
+      background: #000000;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      z-index: 1;
+      pointer-events: none;
+    }
+  }
+
+  &.inputContainerError {
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1rem;
+      border-radius: 16rem;
+      background: linear-gradient(102.01deg, $text-negative -7.77%, rgba($text-negative, 0.38) 53.15%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      z-index: 1;
+      pointer-events: none;
+    }
+  }
+}
+
+.labelContainer {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba($text-secondary, 0.6);
+  font-family: Spezia;
+  @include font(28, 400, 36);
+  letter-spacing: -1rem;
+  margin-left: 24rem;
+  z-index: 3;
+  transition: font-size 0.3s ease, line-height 0.3s ease, color 0.3s ease;
+
+  span {
+    font-family: Spezia;
+    font-weight: 400;
+    font-size: 28rem;
+    line-height: 36rem;
+    letter-spacing: -1rem;
+    color: rgba($text-secondary, 0.6);
+    transition: font-size 0.3s ease, line-height 0.3s ease, color 0.3s ease;
+  }
+
+  &.animated {
+    top: 33rem;
+    transform: none;
+    
+    span {
+      @include font(18, 400, 24);
+      letter-spacing: -1rem;
+      color: rgba($text-secondary, 0.6);
+      @media screen and (max-width: 700px) {
+        letter-spacing: -0.5rem;
+      }
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    margin-left: 16rem;
+    @include font(16, 400, 20);
+    letter-spacing: -0.5rem;
+
+    &::placeholder {
+      @include font(16, 400, 20);
+      letter-spacing: -0.5rem;
+    }
+
+    span {
+      @include font(16, 400, 20);
+      letter-spacing: -0.5rem;
+    }
+
+    &.animated {
+      top: 16rem;
+      span {
+        @include font(12, 400, 16);
+      }
+    }
+  }
+}
+
+.textareaLabelContainer {
+  position: absolute;
+  top: 30rem;
+  pointer-events: none;
+  color: rgba($text-secondary, 0.6);
+  font-family: Spezia;
+  font-weight: 400;
+  font-size: 28rem;
+  line-height: 36rem;
+  letter-spacing: -1rem;
+  margin-left: 24rem;
+  z-index: 3;
+  transition: font-size 0.3s ease, line-height 0.3s ease, color 0.3s ease;
+
+  span {
+    font-family: Spezia;
+    font-weight: 400;
+    font-size: 28rem;
+    line-height: 36rem;
+    letter-spacing: -1rem;
+    color: rgba($text-secondary, 0.6);
+    transition: font-size 0.3s ease, line-height 0.3s ease, color 0.3s ease;
+  }
+
+  &.animated {
+    top: 33rem;
+    
+    span {
+      font-size: 18rem;
+      line-height: 24rem;
+      letter-spacing: -1rem;
+      color: rgba($text-secondary, 0.6);
+    }
+  }
+  @media screen and (max-width: 700px) {
+    top: 16rem;
+    margin-left: 16rem;
+    @include font(16, 400, 20);
+    letter-spacing: -0.5rem;
+    
+    span {
+      @include font(16, 400, 20);
+      letter-spacing: -0.5rem;
+    }
+
+    &.animated {
+      top: 16rem;
+      
+      span {
+        @include font(12, 400, 16);
+        letter-spacing: -0.5rem;
+      }
+    }
+  }
+}
+
+.error {
+  font-family: "Azeret";
+  font-weight: 300;
+  font-size: 11rem;
+  line-height: 16rem;
+  text-transform: uppercase;
+  color: $text-negative;
+  padding-top: 12rem;
+  margin-left: 0;
+}

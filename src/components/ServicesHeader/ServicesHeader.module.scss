@@ -1,0 +1,75 @@
+@use "@/assets/styles/abstracts" as *;
+
+.servicesContainer {
+  display: flex;
+  margin: 80rem auto;
+  width: 100%;
+  padding-inline: 48rem;
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+    gap: 24rem 40rem;
+    width: 100%;
+    .tabContainer {
+      display: flex;
+      align-items: flex-start;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      .tab {
+        font-family: "Spezia Serif Condensed B";
+        font-style: normal;
+        @include font(80, 400, 88);
+        text-align: center;
+        letter-spacing: -3rem;
+        transition: all 0.3s ease;
+        color: rgba($text-secondary, 0.6);
+        &.active {
+          color: $text-primary;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 700px) {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    .tabs {
+      margin: 40rem 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      flex-wrap: nowrap;
+      gap: 24rem;
+      width: 100%;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      justify-content: flex-start;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      .tabContainer {
+        display: flex;
+        align-items: flex-start;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        flex-shrink: 0;
+        .tab {
+          @include font(34, 400, 40);
+          letter-spacing: -1rem;
+        }
+        &:first-child {
+          padding-left: 16rem;
+        }
+        &:last-child {
+          padding-right: 16rem;
+        }
+      }
+    }
+  }
+}

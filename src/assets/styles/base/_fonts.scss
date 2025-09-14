@@ -1,0 +1,103 @@
+$font-types: (
+    "Thin": 100,
+    "ExtraLight": 200,
+    "Light": 300,
+    "Regular": 400,
+    "Medium": 500,
+    "SemiBold": 600,
+    "Bold": 700,
+    "ExtraBold": 800,
+    "Black": 900
+);
+
+$font-types-italic: (
+    "ThinItalic": 100,
+    "ExtraLightItalic": 200,
+    "LightItalic": 300,
+    "Italic": 400,
+    "MediumItalic": 500,
+    "SemiBoldItalic": 600,
+    "BoldItalic": 700,
+    "ExtraBoldItalic": 800,
+    "BlackItalic": 900
+);
+
+$font-types-spezia-condensed-b: (
+    "Book": 350,
+    "Regular": 400,
+    "Medium": 500,
+    "SemiBold": 600,
+    "Bold": 700,
+    "Black": 900
+);
+
+$font-types-spezia: (
+    "Thin": 100,
+    "Light": 300,
+    "Book": 350,
+    "Regular": 400,
+    "Medium": 500,
+    "SemiBold": 600,
+    "Bold": 700,
+    "Black": 900
+);
+
+@each $type, $weight in $font-types {
+    @font-face {
+        font-family: "Azeret";
+        font-weight: $weight;
+        font-style: normal;
+        src: url("/fonts/Azeret/AzeretMono-#{$type}.ttf") format("truetype");
+        font-display: swap;
+    }
+}
+
+@each $type, $weight in $font-types-italic {
+    @font-face {
+        font-family: "Azeret";
+        font-weight: $weight;
+        font-style: italic;
+        src: url("/fonts/Azeret/AzeretMono-#{$type}.ttf") format("truetype");
+        font-display: swap;
+    }
+}
+
+@each $type, $weight in $font-types-spezia-condensed-b {
+    @font-face {
+        font-family: "Spezia Serif Condensed B";
+        font-weight: $weight;
+        font-style: normal;
+        src: url("/fonts/Spezia Serif Condensed B/SpeziaSerifCondensed-#{$type}B.ttf") format("truetype");
+        font-display: swap;
+    }
+}
+
+@each $type, $weight in $font-types-spezia-condensed-b {
+     @font-face {
+        font-family: "Spezia Serif Condensed B";
+        font-weight: $weight;
+        font-style: italic;
+        src: url("/fonts/Spezia Serif Condensed B/SpeziaSerifCondensed-#{$type}ItalicB.ttf") format("truetype");
+        font-display: swap;
+    }
+}
+
+@each $type, $weight in $font-types-spezia {
+    @font-face {
+        font-family: "Spezia";
+        font-weight: $weight;
+        font-style: normal;
+        src: url("/fonts/Spezia/Spezia #{$type}.ttf") format("truetype");
+        font-display: swap;
+    }
+}
+
+@each $type, $weight in $font-types-spezia {
+     @font-face {
+        font-family: "Spezia";
+        font-weight: $weight;
+        font-style: italic;
+        src: url("/fonts/Spezia/Spezia #{$type} Italic.ttf") format("truetype");
+        font-display: swap;
+    }
+}

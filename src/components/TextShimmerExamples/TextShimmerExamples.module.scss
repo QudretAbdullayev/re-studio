@@ -1,0 +1,47 @@
+@use "@/assets/styles/abstracts" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40rem;
+  padding: 40rem;
+}
+
+.example {
+  display: flex;
+  flex-direction: column;
+  gap: 16rem;
+  
+  h3 {
+    font-family: 'Spezia Serif Condensed B';
+    @include font(24, 400, 32);
+    color: $text-secondary;
+    margin: 0;
+  }
+}
+
+.basic {
+  font-family: 'Azeret', monospace;
+  @include font(14, 400, 20);
+  --base-color: #{rgba($text-secondary, 0.3)};
+  --base-gradient-color: #{$text-secondary};
+}
+
+.colored {
+  @include font(20, 500, 28);
+  --base-color: #{rgba(#3b82f6, 0.3)};
+  --base-gradient-color: #{#3b82f6};
+  
+  @media (prefers-color-scheme: dark) {
+    --base-color: #{rgba(#60a5fa, 0.3)};
+    --base-gradient-color: #{#60a5fa};
+  }
+}
+
+.large {
+  font-family: 'Spezia Serif Condensed B';
+  @include font(32, 400, 40);
+  letter-spacing: -1rem;
+  --base-color: #{rgba($color-primary, 0.3)};
+  --base-gradient-color: #{$color-primary};
+}

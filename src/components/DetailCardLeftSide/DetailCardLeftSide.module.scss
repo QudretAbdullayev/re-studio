@@ -1,0 +1,30 @@
+@use "@/assets/styles/abstracts" as *;
+
+.container {
+    width: 350rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0rem 8rem 40rem 40rem;
+    gap: 30rem;
+    width: 398rem;
+    height: calc(100vh - 104rem);
+    border: none;
+    position: sticky;
+    top: 104rem;
+    .mainImageContainer{
+        display: none;
+    }
+    @media screen and (max-width: 700px) {
+        width: 402rem;
+        position: relative;
+        top: initial;
+        height: auto;
+        padding: 0 16rem;
+        gap: 56rem;
+        .mainImageContainer{
+            display: block;
+        }
+    }
+}

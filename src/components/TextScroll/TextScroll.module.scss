@@ -1,0 +1,71 @@
+@use "@/assets/styles/abstracts" as *;
+
+.container {
+  min-height: 200vh;
+  width: 100%;
+  position: relative;
+}
+
+.fixedContainer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.contentWrapper {
+  width: 100%;
+  max-width: 1200rem;
+  margin: 0 auto;
+  padding: 16rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textWrapper {
+  display: flex;
+  padding: 16rem;
+  padding-top: 56rem;
+  width: 100%;
+  max-width: 700rem;
+  margin: 0 auto;
+  height: 500rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  pointer-events: auto;
+}
+
+.spacer {
+  height: 200vh;
+}
+
+// Responsive adjustments
+@media screen and (max-width: 768px) {
+  .contentWrapper {
+    max-width: 100%;
+    padding: 12rem;
+  }
+  
+  .textWrapper {
+    max-width: 100%;
+    padding: 12rem;
+    padding-top: 40rem;
+    height: 400rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contentWrapper {
+    padding: 8rem;
+  }
+  
+  .textWrapper {
+    padding: 8rem;
+    padding-top: 32rem;
+    height: 350rem;
+  }
+}

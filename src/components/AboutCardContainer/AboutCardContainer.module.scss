@@ -1,0 +1,159 @@
+@use "@/assets/styles/abstracts" as *;
+
+.container {
+  padding: 80rem 0;
+  display: flex;
+  gap: 24rem;
+  width: 100%;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8rem;
+    gap: 8rem;
+    position: relative;
+    width: 485.33rem;
+    height: 528rem;
+
+    background: $container-default;
+    border-radius: 24rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1rem;
+      border-radius: 24rem;
+      background: linear-gradient(138.98deg,
+          rgba($text-secondary, 0.12) 0%,
+          rgba($text-primary, 0) 50%,
+          rgba($text-secondary, 0.12) 100%);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .image {
+      position: relative;
+      width: 469.33rem;
+      height: 512rem;
+      background: rgba($background-tones-grey, 0.08);
+      border-radius: 16rem;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 1rem;
+        border-radius: 16rem;
+        background: linear-gradient(238deg, rgba($text-secondary, 0.2) 0.67%, rgba($text-primary, 0.024) 49.97%, rgba($text-secondary, 0.2) 99.27%);
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 1;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .cardSmall {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8rem;
+    gap: 8rem;
+    width: 485.33rem;
+    height: 376rem;
+    background: $container-default;
+    border-radius: 24rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1rem;
+      border-radius: 24rem;
+      background: linear-gradient(138.98deg,
+          rgba($text-secondary, 0.12) 0%,
+          rgba($text-primary, 0) 50%,
+          rgba($text-secondary, 0.12) 100%);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .imageSmall {
+      position: relative;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 24rem;
+      gap: 8rem;
+      width: 469.33rem;
+      height: 360rem;
+      background: rgba($background-tones-grey, 0.08);
+      border-radius: 16rem;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 1rem;
+        border-radius: 16rem;
+        background: linear-gradient(238deg, rgba($text-secondary, 0.2) 0.67%, rgba($text-primary, 0.024) 49.97%, rgba($text-secondary, 0.2) 99.27%);
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 1;
+        pointer-events: none;
+      }
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    padding: 56rem 0 80rem;
+    flex-direction: column;
+
+    .card {
+      width: 370rem;
+      height: 288rem;
+      background: $container-default;
+      border-radius: 24rem;
+
+      .image {
+        width: 354rem;
+        height: 272rem;
+      }
+    }
+
+    .cardSmall {
+      width: 370rem;
+      height: 288rem;
+      background: $container-default;
+      border-radius: 24rem;
+
+      .imageSmall {
+        width: 354rem;
+        height: 272rem;
+      }
+    }
+  }
+}

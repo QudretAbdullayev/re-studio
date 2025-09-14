@@ -1,0 +1,73 @@
+@use '../abstracts';
+
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+* {
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input {
+  box-shadow: none;
+  border-radius: 0;
+}
+
+ul,li {
+  padding-left: 0;
+  list-style: none;
+}
+
+address {
+  margin-bottom: 0;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+  display: flex;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  font-size: 16rem;
+  font-weight: 400;
+}
+
+ul {
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+button {
+  transition: 0.3s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+}

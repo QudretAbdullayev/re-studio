@@ -1,0 +1,52 @@
+@use "@/assets/styles/abstracts" as *;
+
+.parallax {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+
+  .scroller {
+    display: flex;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    will-change: transform;
+    animation: marquee 60s linear infinite;
+    gap: 48rem;
+
+    .imageContainer {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+
+      .image {
+        width: 1159rem;
+        height: 290rem;
+      }
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    .scroller {
+      gap: 24rem;
+
+      .imageContainer {
+        .image {
+          width: 426rem;
+          height: 106rem;
+        }
+      }
+    }
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

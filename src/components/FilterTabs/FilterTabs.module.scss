@@ -1,0 +1,86 @@
+@use "@/assets/styles/abstracts" as *;
+
+.container {
+    width: 100%;
+    padding: 0 48rem;
+
+    .tabs {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        align-content: center;
+        padding: 80rem 100rem;
+        gap: 24rem 40rem;
+        width: 1504rem;
+
+        .tab {
+            padding: 0;
+            height: 88rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgba($text-secondary, 0.6);
+            font-family: 'Spezia Serif Condensed B';
+            @include font(80, 400, 88);
+            text-align: center;
+            letter-spacing: -3rem;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: rgba($text-secondary, 0.8);
+            }
+
+            .count {
+                font-family: 'Azeret', monospace;
+                @include font(20, 300, 28);
+                color: inherit;
+                height: 100%;
+                letter-spacing: 0;
+            }
+
+            &.active {
+                color: $text-primary;
+            }
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        padding: 0;
+        .tabs {
+            width: 100%;
+            gap: 24rem;
+            padding: 40rem 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            flex-wrap: nowrap;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .tab {
+                @include font(34, 400, 40);
+                height: 40rem;
+                letter-spacing: -1rem;
+                flex-shrink: 0;
+
+                .count {
+                    @include font(11, 300, 16);
+                    padding: 2rem 0;
+                }
+            }
+            .tab:first-child {
+                padding-left: 16rem;
+            }
+            .tab:last-child {
+                padding-right: 16rem;
+            }
+        }
+    }
+}

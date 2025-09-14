@@ -1,0 +1,10 @@
+.scrollbar {
+  position: fixed;
+  right: 2px;
+  width: 6px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  transition: top 0.1s ease, height 0.2s ease;
+}

@@ -1,0 +1,35 @@
+@use "@/assets/styles/abstracts" as *;
+
+.container {
+  display: flex;
+  gap: 24rem;
+  .left {
+    font-family: 'Azeret';
+    width: 485rem;
+    @include font(11,200,16);
+    background: linear-gradient(259.26deg, $text-primary 13.84%, rgba($text-secondary, 0.6) 62.62%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  .right {
+    width: 740rem;
+    font-family: 'Spezia Serif Condensed B';
+    font-style: italic;
+    @include font(34,400,40);
+    letter-spacing: -1rem;
+    color: $text-primary;
+  }
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    padding-bottom: 64rem;
+    .left {
+      width: 370rem;
+    }
+    .right {
+      width: 370rem;
+    }
+  }
+}
+

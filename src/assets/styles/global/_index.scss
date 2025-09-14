@@ -1,0 +1,52 @@
+@use "../abstracts" as *;
+
+html {
+  font-size: calc(100vw / 402);
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (min-width: 700px) {
+  html {
+    font-size: calc(100vw / 1600);
+  }
+}
+
+body {
+  position: relative;
+  height: 100%;
+  background-color: $background;
+  overflow-x: hidden !important;
+}
+
+main {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.g-container {
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 48rem;
+  @media screen and (max-width: 700px) {
+    padding: 0 16rem;
+    width: 402rem;
+  }
+}
+
+.sm-container {
+  margin: 0 auto;
+  max-width: 1920rem;
+  padding: 0 160rem;
+
+  @media only screen and (max-width: 700px) {
+    padding: 0 16rem;
+  }
+}
