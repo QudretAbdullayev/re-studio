@@ -9,7 +9,7 @@
   gap: 8rem;
   width: 485.33rem;
   height: 376rem;
-  background: rgba($background-tones-grey, 0.08);
+  background: #78788014;
   border-radius: 24rem;
   position: relative;
 
@@ -19,7 +19,7 @@
     inset: 0;
     padding: 1rem;
     border-radius: 24rem;
-    background: linear-gradient(138.98deg, rgba($secondary-red, 0.9) 0%, rgba($white, 0) 50%, rgba($secondary-yellow, 0.4) 100%);
+    background: linear-gradient(138.98deg, rgba(0, 0, 0, 0.8) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.4) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -36,7 +36,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 40rem;
-    background: rgba($background-tones-grey, 0.08);
+    background: #FFFFFF;
     border-radius: 16rem;
     position: relative;
 
@@ -46,7 +46,7 @@
       inset: 0;
       padding: 1rem;
       border-radius: 16rem;
-      background: linear-gradient(138.98deg, rgba($background-tones-white, 0.12) 0%, rgba($white, 0) 50%, rgba($background-tones-white, 0.12) 100%);
+      background: linear-gradient(138.98deg, rgba(235, 235, 245, 0.12) 0%, rgba(255, 255, 255, 0) 50%, rgba(235, 235, 245, 0.12) 100%);
       -webkit-mask: linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;

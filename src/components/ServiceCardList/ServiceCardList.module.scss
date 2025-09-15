@@ -13,16 +13,9 @@
     content: "";
     position: absolute;
     inset: 0;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 24rem;
-
-    background: linear-gradient(
-      138.98deg,
-      rgba($background-tones-white, 0.12) 0%,
-      rgba(255, 255, 255, 0) 50%,
-      rgba($background-tones-white, 0.12) 100%
-    );
-
+    background: linear-gradient(138.98deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -37,7 +30,7 @@
     align-items: center;
     padding: 24rem;
     gap: 24rem;
-    border-bottom: 1rem solid rgba($background-tones-white, 0.12);
+    border-bottom: 1rem solid #78788033;
     border-radius: 0rem;
 
     &:last-child {

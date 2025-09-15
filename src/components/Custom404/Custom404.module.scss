@@ -76,15 +76,37 @@
       text-transform: uppercase;
       color: $text-primary;
       cursor: pointer;
-      border: 1rem solid rgba($text-secondary, 0.12);
-      background: rgba($overlay-default, 0.30);
+      background: #EBEBEB;
       backdrop-filter: blur(52rem);
       -webkit-backdrop-filter: blur(52rem);
+      position: relative;
+      &::before {
+        content: "";
+            position: absolute;
+            inset: 0;
+            padding: 1rem;
+            border-radius: inherit;
+            background:  linear-gradient(101.97deg, rgba(60, 60, 67, 0.3) -16.79%, rgba(255, 255, 255, 0) 51.48%, rgba(60, 60, 67, 0.3) 119.75%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box,
+              linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: 1;
+            pointer-events: none;
+
+
+      }
+      .reButtonText{
+        vertical-align: middle;
+      }
+
     }
     .externalIcon {
+
       svg{
         width: 12rem;
         height: 12rem;
+        color: #000000;
       }
     }
     .reProfile {

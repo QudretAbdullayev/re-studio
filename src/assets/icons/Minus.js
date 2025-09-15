@@ -10,7 +10,7 @@ const Minus = ({ props }) => {
     >
       <path
         d="M5 12H19"
-        stroke="black"
+        stroke="white"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"

@@ -10,7 +10,7 @@ const Plus = ({ props }) => {
     >
       <path
         d="M12 5V19M5 12H19"
-        stroke="white"
+        stroke="black"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"

@@ -1,7 +1,7 @@
 @use "@/assets/styles/abstracts" as *;
 
 .progressBar {
-  background: linear-gradient(90deg, #B5A000 0%, #AE0001 50.48%, #05AD00 75.24%, #1216B7 100%);
+  background: #000000;
   position: fixed;
   top: 0;
   left: 0;
@@ -59,10 +59,12 @@
           font-family: 'Azeret', monospace;
           @include font(11,300,16);
           text-transform: uppercase;
-          background: linear-gradient(270deg, $text-primary -20.69%, rgba($text-secondary, 0.6) 94.83%);
+          background: linear-gradient(270deg, #000000 -20.69%, rgba(60, 60, 67, 0.6) 94.83%);
+
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
+          width: 100%;
         }
       }
       .activeSidebarLink {

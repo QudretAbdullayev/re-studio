@@ -124,7 +124,7 @@
 
       .iconPlus {
         background: rgba($background-tones-grey, 0.08);
-        box-shadow: inset 3rem 4rem 4rem 0 rgba($white, 0.08);
+        box-shadow: 3rem 4rem 4rem 0rem #00000014 inset;
         position: relative;
 
         &::before {
@@ -133,8 +133,7 @@
           inset: 0;
           padding: 1rem;
           border-radius: 24rem;
-          padding: 2rem;
-          background: linear-gradient(138.98deg, rgba($text-secondary, 0.12) 0%, rgba($text-primary, 0) 50%, rgba($text-secondary, 0.12) 100%);
+          background: linear-gradient(127.94deg, rgba(60, 60, 67, 0.3) -0.77%, rgba(255, 255, 255, 0) 58.98%, rgba(60, 60, 67, 0.3) 118.74%);
           -webkit-mask:
             linear-gradient(#fff 0 0) content-box,
             linear-gradient(#fff 0 0);
@@ -145,7 +144,7 @@
         }
 
         &:hover {
-          box-shadow: inset -3rem -4rem 4rem 0 rgba($white, 0.08);
+          box-shadow: -3rem -4rem 4rem 0rem #00000014 inset;
 
           &::before {
             background: linear-gradient(138.98deg, rgba($background-tones-white, 0.12) 0%, rgba($white, 0) 50%, rgba($background-tones-white, 0.12) 100%);
@@ -157,7 +156,8 @@
 
       .iconMinus {
         background: $text-primary;
-        box-shadow: inset -3rem -4rem 4rem 0 rgba($black, 0.12);
+        box-shadow: 3rem 4rem 4rem 0rem #FFFFFF3D inset;
+
         position: relative;
         &::before {
           content: "";
@@ -165,7 +165,9 @@
           inset: 0;
           padding: 1rem;
           border-radius: 24rem;
-          background: linear-gradient(138.98deg, $border-white 0%, rgba($white, 0) 50%, $border-white 100%);
+          background: linear-gradient(138.98deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 50%, #FFFFFF 100%);
+
+
           -webkit-mask:
             linear-gradient(#fff 0 0) content-box,
             linear-gradient(#fff 0 0);
@@ -175,10 +177,10 @@
           pointer-events: none;
         }
         &:hover {
-          box-shadow: inset 3rem 4rem 4rem 0 rgba($black, 0.12);
-          &::before {
-            background:  linear-gradient(138.98deg, $border-white 0%, rgba($white, 0) 50%, $border-white 100%);
+          box-shadow: -3px -4px 4px 0px #FFFFFF3D inset;
 
+          &::before {
+            background: linear-gradient(138.98deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 50%, #FFFFFF 100%);
           }
         }
       }
@@ -190,7 +192,9 @@
       inset: 0;
       padding: 1rem;
       border-radius: 24rem;
-      background: linear-gradient(138.98deg, rgba($text-secondary, 0.12) 0%, rgba($text-primary, 0) 50%, rgba($text-secondary, 0.12) 100%);
+      background: linear-gradient(138.98deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 100%);
+
+
       -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);

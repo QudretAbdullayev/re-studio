@@ -29,9 +29,9 @@ export default function Custom404() {
             onMouseEnter={playClickSound}
           >
             <Link href="/" className={styles.reProfile}>
-              <span><SafeImage fill src="/re.svg" alt="Re Studio"/></span>
+              <span><SafeImage fill src="/heats.svg" alt="Heats"/></span>
             </Link>
-            <span>GO TO RE STUDIO</span>
+            <span className={styles.reButtonText}>GO TO HEATS</span>
             <span className={styles.externalIcon}><External/></span>
           </button>
         </div>

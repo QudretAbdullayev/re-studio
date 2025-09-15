@@ -31,9 +31,9 @@ export default function PrivacyPolicy() {
       content: `
         <p>We may collect and process the following types of information:</p>
         <ul>
-          <li style="color: #FFFFFF;">Contact Information:<span style="color: #EBEBF599;"> Such as your name, email address, phone number, or any other details you provide when you contact us or submit a project inquiry.</span></li>
-          <li style="color: #FFFFFF;">Project Information:<span style="color: #EBEBF599;"> Any project briefs, files, or additional information you choose to share with us related to our services.</span></li>
-          <li style="color: #FFFFFF;">Technical Information:<span style="color: #EBEBF599;"> Including your IP address, browser type, device details, cookies, and usage data to help us analyze and improve our website performance.</span></li>
+          <li style="color: #000000">Contact Information:<span style="color: #3C3C4399"> Such as your name, email address, phone number, or any other details you provide when you contact us or submit a project inquiry.</span></li>
+          <li style="color: #000000">Project Information:<span style="color: #3C3C4399"> Any project briefs, files, or additional information you choose to share with us related to our services.</span></li>
+          <li style="color: #000000">Technical Information:<span style="color: #3C3C4399"> Including your IP address, browser type, device details, cookies, and usage data to help us analyze and improve our website performance.</span></li>
         </ul>
       `,
     },
@@ -56,9 +56,9 @@ export default function PrivacyPolicy() {
         <p>
         We do not sell or rent your personal information. We may share it only in the following cases:
           <ul>
-            <li style="color: #FFFFFF;">Service Providers:<span style="color: #EBEBF599;"> With trusted partners who help us operate our website or deliver our services (e.g., hosting, analytics).</span></li>
-            <li style="color: #FFFFFF;">Legal Requirements:<span style="color: #EBEBF599;"> To comply with applicable laws, regulations, or legal processes.</span></li>
-            <li style="color: #FFFFFF;">Business Transfers:<span style="color: #EBEBF599;"> In connection with a merger, acquisition, or sale of all or part of our business.</span></li>
+            <li style="color: #000000">Service Providers:<span style="color: #3C3C4399"> With trusted partners who help us operate our website or deliver our services (e.g., hosting, analytics).</span></li>
+            <li style="color: #000000">Legal Requirements:<span style="color: #3C3C4399"> To comply with applicable laws, regulations, or legal processes.</span></li>
+            <li style="color: #000000">Business Transfers:<span style="color: #3C3C4399"> In connection with a merger, acquisition, or sale of all or part of our business.</span></li>
           </ul>
         </p>
       `,
@@ -226,7 +226,6 @@ export default function PrivacyPolicy() {
         <div className={styles.texts}>
           <div className={styles.title}>Our Commitment</div>
           <div className={styles.description}>Privacy Policy</div>
-          <div className={styles.updated}>Last updated: 28 June 2025</div>
         </div>
       </div>
 
