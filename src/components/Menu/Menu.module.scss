@@ -82,7 +82,7 @@
       gap: 4rem;
       width: 370rem;
       height: 260rem;
-      background: rgba(60, 60, 67, 0.3);
+      background: #EBEBEB99;
       backdrop-filter: blur(26rem);
       border-radius: 32rem;
       will-change: transform;
@@ -119,7 +119,7 @@
           inset: 0;
           padding: 1rem;
           border-radius: 96rem;
-          
+
           background: linear-gradient(138.98deg, rgba($background-tones-white, 0.12) 0%, rgba($white, 0) 50%, rgba($background-tones-white, 0.12) 100%);
           -webkit-mask: linear-gradient(#fff 0 0) content-box,
             linear-gradient(#fff 0 0);
@@ -143,6 +143,23 @@
           background: $border-black;
         }
       }
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 1rem;
+        border-radius: inherit;
+        background: linear-gradient(101.97deg, rgba(60, 60, 67, 0.3) -16.79%, rgba(255, 255, 255, 0) 51.48%, rgba(60, 60, 67, 0.3) 119.75%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        z-index: 1;
+        pointer-events: none;
+      }
     }
 
     .overlay {
@@ -164,6 +181,7 @@
     transform: translate3d(0, -100%, 0);
     opacity: 1;
   }
+
   to {
     transform: translate3d(0, 0, 0);
     opacity: 1;
@@ -175,6 +193,7 @@
     transform: translate3d(0, 0, 0);
     opacity: 1;
   }
+
   to {
     transform: translate3d(0, -100%, 0);
     opacity: 1;

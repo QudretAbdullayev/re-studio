@@ -36,15 +36,6 @@ export default function Menu({ onClose, isClosing, footerResults, headerResults 
   return (
     <div className={`${styles.container} ${isClosing ? styles.closing : ''}`} ref={menuRef}>
       <div className={styles.menu}>
-      <VideoStatic
-        src="/heats.mp4"
-        imgSrc="/heats.jpg"
-        className={styles.backgroundVideo}
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
         <h1 className={styles.title}>Menu</h1>
         <div className={styles.segment}>
           {headerResults?.navigations?.map((nav) => (

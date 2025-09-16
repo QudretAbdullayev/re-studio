@@ -86,6 +86,23 @@
           background: $border-black;
           animation: growWidth 0.6s ease-in-out forwards;
         }
+
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          padding: 1rem;
+          border-radius: 96rem;
+          background: linear-gradient(138.98deg, rgba(0, 0, 0, 0.08) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.08) 100%);
+
+
+          -webkit-mask: linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          z-index: 1;
+          pointer-events: none;
+        }
       }
 
       &::before {
@@ -95,8 +112,6 @@
         padding: 1rem;
         border-radius: 96rem;
         background: linear-gradient(101.97deg, rgba(60, 60, 67, 0.3) -16.79%, rgba(255, 255, 255, 0) 51.48%, rgba(60, 60, 67, 0.3) 119.75%);
-
-
         -webkit-mask: linear-gradient(#fff 0 0) content-box,
           linear-gradient(#fff 0 0);
         -webkit-mask-composite: xor;
@@ -138,25 +153,7 @@
       .active {
         position: relative;
         z-index: 1;
-        box-shadow: inset 3rem 4rem 4rem 0rem rgba($white, 0.08);
-        &::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          padding: 1rem;
-          border-radius: 96rem;
-          background: linear-gradient(138.98deg, rgba(0, 0, 0, 0.08) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.08) 100%);
-
-
-
-
-          -webkit-mask: linear-gradient(#fff 0 0) content-box,
-            linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          z-index: 1;
-          pointer-events: none;
-        }
+        box-shadow: inset 3rem 4rem 4rem 0rem rgba(#000000, 0.06)
       }
     }
   }
@@ -271,6 +268,108 @@
       display: none;
       backdrop-filter: blur(26rem);
     }
+
+    .soundBlack {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+      padding: 0 11rem;
+      width: max-content;
+      height: 40rem;
+      background: rgba($background-tones-grey, 0.08);
+      border-radius: 96rem;
+      overflow: hidden;
+      z-index: 0;
+      backdrop-filter: blur(26rem);
+      transition: background-color 0.2s ease;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 1rem;
+        border-radius: inherit;
+        background: linear-gradient(111.69deg,
+            rgba($text-secondary, 0.12) 0%,
+            rgba($background-tones-grey, 0) 49.31%,
+            rgba($text-secondary, 0.12) 98.62%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      &::after,
+      &::before {
+        z-index: 2;
+      }
+
+      .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3;
+
+        svg {
+          margin-right: 4rem;
+          width: 16rem;
+          height: 16rem;
+          transition: opacity 0.2s ease, transform 0.2s ease;
+          color: #FFFFFF;
+        }
+      }
+
+      .soundContent {
+        width: 100%;
+        padding: 0 1rem;
+
+        span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Azeret", monospace;
+          @include font(11, 300, 16);
+          color: $text-primary;
+          height: 16rem;
+        }
+      }
+
+      .option {
+        font-family: "Azeret", monospace;
+        @include font(11, 300, 16);
+        color: $text-primary;
+      }
+    }
+
+    .applyBlack {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: max-content;
+      padding: 8rem 24rem;
+      height: 40rem;
+      background: $background-black;
+      border-radius: 96rem;
+      border: none;
+      display: flex;
+      flex-direction: column;
+
+      .applyContent {
+        height: 16rem;
+        width: 100%;
+
+        span {
+          font-family: "Azeret", monospace;
+          @include font(11, 400, 16);
+          text-transform: uppercase;
+          color: $text-white;
+        }
+      }
+    }
   }
 
   @media screen and (max-width: 700px) {
@@ -343,6 +442,59 @@
         }
       }
 
+      .soundBlack {
+        padding: 12rem;
+        height: 40rem;
+        width: 40rem;
+
+        .soundContent {
+          .charClass {
+            display: none;
+          }
+
+          span {
+            span {
+              svg {
+                margin-right: 0;
+              }
+
+              span {
+                display: none;
+              }
+            }
+          }
+        }
+
+        .icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 3;
+
+          svg {
+            margin-right: 4rem;
+            width: 16rem;
+            height: 16rem;
+          }
+        }
+
+        .option {
+          display: none;
+        }
+      }
+
+      .soundBlack {
+        padding: 12rem;
+        width: 40rem;
+        height: 40rem;
+        border-radius: 96rem;
+        z-index: 2;
+
+        .option {
+          display: none;
+        }
+      }
+
       .menu {
         position: relative;
         display: flex;
@@ -364,6 +516,44 @@
           padding: 1rem;
           border-radius: inherit;
           background: linear-gradient(101.97deg, rgba(60, 60, 67, 0.3) -16.79%, rgba(255, 255, 255, 0) 51.48%, rgba(60, 60, 67, 0.3) 119.75%);
+          -webkit-mask: linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        &::after,
+        &::before {
+          z-index: 2;
+        }
+      }
+
+      .menuBlack {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12rem 16rem;
+        background: rgba($background-tones-grey, 0.08);
+        font-family: "Azeret", monospace;
+        @include font(11, 300, 16);
+        color: $text-primary;
+        border-radius: 96rem;
+        overflow: hidden;
+        z-index: 2;
+
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          padding: 1rem;
+          border-radius: inherit;
+          background: linear-gradient(111.69deg,
+              rgba($text-secondary, 0.12) 0%,
+              rgba($background-tones-grey, 0) 49.31%,
+              rgba($text-secondary, 0.12) 98.62%);
           -webkit-mask: linear-gradient(#fff 0 0) content-box,
             linear-gradient(#fff 0 0);
           -webkit-mask-composite: xor;

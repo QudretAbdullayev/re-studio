@@ -6,6 +6,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40rem;
+    border-bottom: 1rem solid #78788029;
+    &:last-of-type {
+      border-bottom: initial;
+    }
   }
 
   .texts {
@@ -55,8 +59,11 @@
       color: rgba($text-primary, 1);
 
       &.big {
-        @include font(88, 400, 88);
-        letter-spacing: -3rem;
+        @include font(64, 400, 68);
+        letter-spacing: -1.5rem;
+        span{
+          vertical-align: middle !important;
+        }
       }
     }
 
@@ -181,7 +188,7 @@
         letter-spacing: -1rem;
 
         &.big {
-          @include font(44, 400, 48);
+          @include font(34, 400, 40);
           letter-spacing: -1rem;
         }
       }

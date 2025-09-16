@@ -9,19 +9,24 @@
   gap: 40rem;
   color: $text-primary;
   height: calc(100vh - 104rem);
-  .header{
+  position: relative;
+  z-index: 20;
+
+  .header {
     width: 994rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 32rem;
+
     .title {
       font-family: 'Azeret', monospace;
-      @include font(11,300,16);
+      @include font(11, 300, 16);
       text-align: center;
       text-transform: uppercase;
       color: rgba($text-secondary, 0.6);
     }
+
     .errorCode {
       font-family: 'Spezia Serif Condensed B';
       @include font(256, 400, 180);
@@ -31,11 +36,13 @@
       leading-trim: CAP_HEIGHT;
     }
   }
+
   .mainTexts {
     width: 994rem;
+
     .description {
       font-family: 'Spezia Serif Condensed B';
-      @include font(56,400,56);
+      @include font(56, 400, 56);
       text-align: center;
       letter-spacing: -1.5rem;
       color: $text-primary;
@@ -50,6 +57,7 @@
     justify-content: center;
     gap: 8rem;
     padding-bottom: 40rem;
+
     .homeButton {
       display: flex;
       justify-content: center;
@@ -57,7 +65,7 @@
       padding: 12rem 24rem;
       background: $background-black;
       border-radius: 96rem;
-      @include font(11,400,16);
+      @include font(11, 400, 16);
       font-family: 'Azeret', monospace;
       text-transform: uppercase;
       color: $text-white;
@@ -72,7 +80,7 @@
       gap: 8rem;
       border-radius: 96rem;
       font-family: 'Azeret', monospace;
-      @include font(11,400,16);
+      @include font(11, 400, 16);
       text-transform: uppercase;
       color: $text-primary;
       cursor: pointer;
@@ -80,35 +88,49 @@
       backdrop-filter: blur(52rem);
       -webkit-backdrop-filter: blur(52rem);
       position: relative;
+
       &::before {
         content: "";
-            position: absolute;
-            inset: 0;
-            padding: 1rem;
-            border-radius: inherit;
-            background:  linear-gradient(101.97deg, rgba(60, 60, 67, 0.3) -16.79%, rgba(255, 255, 255, 0) 51.48%, rgba(60, 60, 67, 0.3) 119.75%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box,
-              linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            z-index: 1;
-            pointer-events: none;
+        position: absolute;
+        inset: 0;
+        padding: 1rem;
+        border-radius: inherit;
+        background: linear-gradient(101.97deg, rgba(60, 60, 67, 0.3) -16.79%, rgba(255, 255, 255, 0) 51.48%, rgba(60, 60, 67, 0.3) 119.75%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 1;
+        pointer-events: none;
 
 
       }
-      .reButtonText{
+
+      .reButtonText {
         vertical-align: middle;
       }
 
+      .reProfileImage {
+        width: 32rem;
+        height: 32rem;
+
+        img {
+          object-fit: cover;
+
+        }
+      }
+
     }
+
     .externalIcon {
 
-      svg{
+      svg {
         width: 12rem;
         height: 12rem;
         color: #000000;
       }
     }
+
     .reProfile {
       display: flex;
       align-items: center;
@@ -117,33 +139,49 @@
       height: 32rem;
       background: $re-background;
       border-radius: 50%;
-      span{
+
+      span {
         position: relative;
         width: 19.89rem;
         height: 12.36rem;
       }
     }
   }
+
+  .extrasmall {
+    width: 358rem;
+    height: 260rem;
+  }
+
+  .extraextrasmall {
+    width: 230rem;
+    height: 176rem;
+  }
+
   @media screen and (max-width: 700px) {
     padding: 146rem 0 256rem;
     gap: 32rem;
-    .header{
+
+    .header {
       width: 370rem;
+
       .errorCode {
-        @include font(152, 400,152);
+        @include font(152, 400, 152);
         letter-spacing: -4rem;
       }
     }
+
     .mainTexts {
       width: 370rem;
+
       .description {
-        @include font(34,400,40);
+        @include font(34, 400, 40);
         letter-spacing: -1rem;
       }
     }
+
     .buttonContainer {
       width: 370rem;
     }
   }
 }
-

@@ -6,16 +6,17 @@ import { fetchData } from "@/utils/httpService";
 import ScrollTracker from "@/components/ScrollTracker/ScrollTracker";
 
 export default async function NotFound() {
-  const [headerData] = await Promise.allSettled([fetchData("home/header")]);
 
-  const headerResults = headerData.status === "fulfilled" ? headerData.value : null;
+  const [caseStudiesData, headerData] = await Promise.allSettled([fetchData(`case_studies/case_studies/`),fetchData("home/header")]);
+
+    const headerResults = headerData.status === "fulfilled" ? headerData.value : null;
+    const caseStudiesResults = caseStudiesData.status === "fulfilled" ? caseStudiesData.value : null;
 
   return (
     <SoundProvider>
      <ScrollTracker />
-      <HeatmapCanvas/>
       <Header data={headerResults} />
-      <Custom404/>
+      <Custom404 data={caseStudiesResults}/>
     </SoundProvider>
   )
 }
