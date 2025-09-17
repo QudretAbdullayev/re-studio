@@ -8,8 +8,8 @@
     justify-content: center;
     padding: 12rem 24rem;
     border-radius: 96rem;
-    background: transparent;
-    color: $text-secondary;
+    background: #EBEBEB99;
+    color: $text-primary;
     font-family: 'Azeret', monospace;
     @include font(16, 400, 24);
     cursor: pointer;
@@ -25,7 +25,7 @@
         inset: 0;
         padding: 1rem;
         border-radius: 24rem;
-        background: linear-gradient(101.8deg, rgba($background-tones-white, 0.12) 5.68%, rgba($background-tones-grey, 0.08) 49.74%, rgba($background-tones-white, 0.12) 93.79%);
+        background: linear-gradient(101.97deg, rgba(60, 60, 67, 0.3) -16.79%, rgba(255, 255, 255, 0) 51.48%, rgba(60, 60, 67, 0.3) 119.75%);
         -webkit-mask:
             linear-gradient(#fff 0 0) content-box,
             linear-gradient(#fff 0 0);

@@ -27,7 +27,9 @@
             text-align: center;
             letter-spacing: -3rem;
             transition: color 0.3s ease;
-
+            span {
+                vertical-align: middle !important;
+            }
             &:hover {
                 color: rgba($text-secondary, 0.8);
             }

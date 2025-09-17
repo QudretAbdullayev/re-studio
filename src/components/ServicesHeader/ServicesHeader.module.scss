@@ -30,6 +30,9 @@
         &.active {
           color: $text-primary;
         }
+        span{
+          vertical-align: middle !important;
+        }
       }
     }
   }
