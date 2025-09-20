@@ -9,11 +9,11 @@ const Loader = ({ isReversed = false }) => {
   const hasPlayedSoundRef = useRef(false);
 
   useEffect(() => {
-    if (isReversed && isSoundEnabled && !hasPlayedSoundRef.current) {
+    if (isSoundEnabled && !hasPlayedSoundRef.current) {
       hasPlayedSoundRef.current = true;
       
       try {
-        loaderAudioRef.current = new Audio('/sounds/load.mp3');
+        loaderAudioRef.current = isReversed ? new Audio('/sounds/load-3.mp3') : new Audio('/sounds/load.mp3');
         loaderAudioRef.current.volume = 0.7;
         loaderAudioRef.current.loop = false;
         loaderAudioRef.current.muted = false;

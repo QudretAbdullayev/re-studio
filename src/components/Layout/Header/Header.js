@@ -23,17 +23,20 @@ export default function Header({ data, footerResults }) {
   const [tabHovered, setTabHovered] = useState(null);
   const [indicatorStyle, setIndicatorStyle] = useState({});
   const pathname = usePathname();
-  const { playClickSound, isSoundEnabled, toggleSound, testSound, forceEnableAudio } = useSoundContext();
+  const {
+    playClickSound,
+    isSoundEnabled,
+    toggleSound,
+    testSound,
+    forceEnableAudio,
+  } = useSoundContext();
 
-  // Refs for measuring tab positions - now dynamic based on navigation data
   const tabRefs = useRef({});
   const segmentRef = useRef(null);
-  
-  // Sound hover state'ini ref ile tut
-  const soundHoveredRef = useRef(false);
-  const [soundHoverTrigger, setSoundHoverTrigger] = useState(0); // Force re-render trigger
 
-  // Ensure data has default values to prevent errors
+  const soundHoveredRef = useRef(false);
+  const [soundHoverTrigger, setSoundHoverTrigger] = useState(0);
+
   const safeData = data || {};
   const navigations = safeData.navigations || [];
 
@@ -43,54 +46,44 @@ export default function Header({ data, footerResults }) {
       setTimeout(() => {
         setMenuOpen(false);
         setMenuClosing(false);
-      }, 400); // Animation duration
+      }, 400);
     } else {
       setMenuOpen(true);
     }
   };
 
-  // Add/remove overflow hidden from body when menu opens/closes
   useEffect(() => {
     if (menuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
 
-    // Cleanup function to restore overflow when component unmounts
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [menuOpen]);
 
-  const handleApplyClick = () => {
-    // Apply button action buraya eklenebilir
-  };
-
-  // Update active tab based on pathname
   React.useEffect(() => {
     if (!navigations || navigations.length === 0) return;
 
-    const currentNav = navigations.find(nav =>
+    const currentNav = navigations.find((nav) =>
       pathname.includes(`/${nav.url}`)
     );
 
     if (currentNav) {
       setActiveTab(currentNav.url);
     } else {
-      // Home page or other pages - no active tab
       setActiveTab(null);
-      setIndicatorStyle({}); // Clear indicator when no active tab
+      setIndicatorStyle({});
     }
   }, [pathname, navigations]);
 
-  // Calculate indicator position when activeTab changes
   useEffect(() => {
     if (!activeTab || !segmentRef.current || !tabRefs.current[activeTab]) {
-      // Hide indicator when no active tab
       setIndicatorStyle({
         opacity: 0,
-        transition: 'opacity 0.3s ease'
+        transition: "opacity 0.3s ease",
       });
       return;
     }
@@ -109,7 +102,7 @@ export default function Header({ data, footerResults }) {
         width: `${width}px`,
         opacity: 1,
         transition:
-          'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease'
+          "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease",
       });
     }
   }, [activeTab]);
@@ -118,51 +111,89 @@ export default function Header({ data, footerResults }) {
     setActiveTab(tab);
   };
 
-  // Sound hover handlers
   const handleSoundMouseEnter = () => {
     soundHoveredRef.current = true;
-    setSoundHoverTrigger(prev => prev + 1); // Trigger re-render
+    setSoundHoverTrigger((prev) => prev + 1);
     playClickSound();
   };
 
   const handleSoundMouseLeave = () => {
     soundHoveredRef.current = false;
-    setSoundHoverTrigger(prev => prev + 1); // Trigger re-render
+    setSoundHoverTrigger((prev) => prev + 1);
   };
 
-  // Sort navigation items by order
-  const sortedNavigations = navigations.length > 0 ?
-    [...navigations].sort((a, b) => a.order - b.order) : [];
+  const sortedNavigations =
+    navigations.length > 0
+      ? [...navigations].sort((a, b) => a.order - b.order)
+      : [];
 
   return (
     <>
-      <header className={`g-container ${styles.header} ${menuOpen ? styles.menuOpen : ""}`}>
-        <Link href="/" className={styles.logo} onMouseEnter={playClickSound} onClick={() => { playMobileClickSound(playClickSound); }}>
+      <header
+        className={`g-container ${styles.header} ${
+          menuOpen ? styles.menuOpen : ""
+        }`}
+      >
+        <Link
+          href="/"
+          className={styles.logo}
+          onMouseEnter={playClickSound}
+          onClick={() => {
+            playMobileClickSound(playClickSound);
+          }}
+        >
           <SafeImage src={safeData.logo} fill alt="Heats" priority />
         </Link>
 
         <nav className={styles.nav}>
-          <div className={styles.segment} ref={segmentRef} data-active={activeTab}>
-            {activeTab && <div
-              key={activeTab ?? "none"}
-              className={`${styles.slidingIndicator} ${activeTab ? styles.slidingIndicatorActive : ""
+          <div
+            className={styles.segment}
+            ref={segmentRef}
+            data-active={activeTab}
+          >
+            {activeTab && (
+              <div
+                key={activeTab ?? "none"}
+                className={`${styles.slidingIndicator} ${
+                  activeTab ? styles.slidingIndicatorActive : ""
                 }`}
-              style={indicatorStyle}
-            />}
+                style={indicatorStyle}
+              />
+            )}
 
             {sortedNavigations.map((nav) => (
               <Link
                 key={nav.url}
-                ref={(el) => { tabRefs.current[nav.url] = el; }}
+                ref={(el) => {
+                  tabRefs.current[nav.url] = el;
+                }}
                 href={`/${nav.url}`}
-                className={`${styles.tab} ${activeTab === nav.url ? styles.active : ""}`}
-                onClick={() => { playMobileClickSound(playClickSound); handleTabChange(nav.url); }}
-                onMouseEnter={() => { setTabHovered(nav.url); playClickSound(); }}
+                className={`${styles.tab} ${
+                  activeTab === nav.url ? styles.active : ""
+                }`}
+                onClick={() => {
+                  playMobileClickSound(playClickSound);
+                  handleTabChange(nav.url);
+                }}
+                onMouseEnter={() => {
+                  setTabHovered(nav.url);
+                  playClickSound();
+                }}
                 onMouseLeave={() => setTabHovered(null)}
               >
-                <TextStaggerHover as="span" className={styles.tabContent} isMouseIn={tabHovered === nav.url}>
-                  <TextStaggerHoverActive animation="top" text={nav.title.toUpperCase()} />
-                  <TextStaggerHoverHidden animation="bottom" text={nav.title.toUpperCase()} />
+                <TextStaggerHover
+                  as="span"
+                  className={styles.tabContent}
+                  isMouseIn={tabHovered === nav.url}
+                >
+                  <TextStaggerHoverActive
+                    animation="top"
+                    text={nav.title.toUpperCase()}
+                  />
+                  <TextStaggerHoverHidden
+                    animation="bottom"
+                    text={nav.title.toUpperCase()}
+                  />
                 </TextStaggerHover>
               </Link>
             ))}
@@ -172,12 +203,15 @@ export default function Header({ data, footerResults }) {
         <div className={styles.buttons}>
           <button
             className={styles.sound}
-            onClick={() => { playMobileClickSound(playClickSound); toggleSound(); }}
+            onClick={() => {
+              playMobileClickSound(playClickSound);
+              toggleSound();
+            }}
             onMouseEnter={handleSoundMouseEnter}
             onMouseLeave={handleSoundMouseLeave}
           >
             <TextStaggerHover
-              key={`sound-${isSoundEnabled}-${soundHoverTrigger}`} // Unique key to maintain state
+              key={`sound-${isSoundEnabled}-${soundHoverTrigger}`}
               as="span"
               className={styles.soundContent}
               isMouseIn={soundHoveredRef.current}
@@ -210,7 +244,9 @@ export default function Header({ data, footerResults }) {
               playMobileClickSound(playClickSound);
               toggleMenu();
             }}
-            onMouseEnter={() => { playClickSound(); }}
+            onMouseEnter={() => {
+              playClickSound();
+            }}
           >
             {menuOpen ? "CLOSE" : "MENU"}
           </button>
@@ -219,7 +255,6 @@ export default function Header({ data, footerResults }) {
             className={styles.apply}
             onClick={() => {
               playMobileClickSound(playClickSound);
-              handleApplyClick();
             }}
             onMouseEnter={() => {
               playClickSound();
@@ -233,12 +268,22 @@ export default function Header({ data, footerResults }) {
               isMouseIn={applyHovered}
             >
               <TextStaggerHoverActive animation="top" text={safeData.apply} />
-              <TextStaggerHoverHidden animation="bottom" text={safeData.apply} />
+              <TextStaggerHoverHidden
+                animation="bottom"
+                text={safeData.apply}
+              />
             </TextStaggerHover>
           </Link>
         </div>
       </header>
-      {menuOpen && <Menu onClose={toggleMenu} isClosing={menuClosing} footerResults={footerResults} headerResults={data} />}
+      {menuOpen && (
+        <Menu
+          onClose={toggleMenu}
+          isClosing={menuClosing}
+          footerResults={footerResults}
+          headerResults={data}
+        />
+      )}
     </>
   );
 }

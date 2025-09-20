@@ -1,82 +1,69 @@
-"use client"
+"use client";
+import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
+import LoadingScreen from "./Loader2/Loader2";
+import Loader from "./Loader/Loader";
+import { useScrollTracker } from "../UseScrollTracker/UseScrollTracker";
 
-import { useEffect, useState, useRef } from 'react';
-import { useSoundContext } from '../../../contexts/SoundContext';
-import styles from './Loader.module.scss';
+export default function CombinedLoader({children}) {
+  const [stage, setStage] = useState("loadingScreen");
+  const [isLoadingComplete, setIsLoadingComplete] = useState(false);
+  const pathname = usePathname();
+  const isFirstMount = useRef(true);
+  const previousPathname = useRef(pathname);
 
-export default function LoadingScreen() {
-  const [step, setStep] = useState(0);
-  const { isSoundEnabled } = useSoundContext();
-  const loaderAudioRef = useRef(null);
-  const hasPlayedSoundRef = useRef(false);
+  useScrollTracker(isLoadingComplete);
 
   useEffect(() => {
-    if (isSoundEnabled && !hasPlayedSoundRef.current) {
-      hasPlayedSoundRef.current = true;
+    setIsLoadingComplete(false);
+    
+    if (isFirstMount.current) {
+      setStage("loadingScreen");
+      isFirstMount.current = false;
       
-      try {
-        loaderAudioRef.current = new Audio('/sounds/load.mp3');
-        loaderAudioRef.current.volume = 0.7;
-        loaderAudioRef.current.loop = false;
-        loaderAudioRef.current.muted = false;
-        
-        const playPromise = loaderAudioRef.current.play();
-        if (playPromise !== undefined) {
-          playPromise.catch((error) => {
-            console.warn('Loader sound failed to play:', error);
-          });
-        }
-      } catch (error) {
-        console.warn('Failed to create loader audio:', error);
-      }
+      const timeout1 = setTimeout(() => {
+        setStage("loader");
+      }, 1700);
+
+      const timeout2 = setTimeout(() => {
+        setStage("done");
+        setIsLoadingComplete(true);
+      }, 3100);
+      
+      return () => {
+        clearTimeout(timeout1);
+        clearTimeout(timeout2);
+      };
+    } else {
+      
+      setStage("stairsUp");
+      
+      const timeout1 = setTimeout(() => {
+        setStage("loadingScreen");
+      }, 1400);
+
+      const timeout2 = setTimeout(() => {
+        setStage("loader");
+      }, 3100);
+
+      const timeout3 = setTimeout(() => {
+        setStage("done");
+        setIsLoadingComplete(true);
+      }, 4400);
+      
+      return () => {
+        clearTimeout(timeout1);
+        clearTimeout(timeout2);
+        clearTimeout(timeout3);
+      };
     }
+  }, [pathname]);
 
-    return () => {
-      if (loaderAudioRef.current) {
-        loaderAudioRef.current.pause();
-        loaderAudioRef.current.currentTime = 0;
-        loaderAudioRef.current.src = '';
-        loaderAudioRef.current = null;
-      }
-    };
-  }, [isSoundEnabled]);
 
-  useEffect(() => {
-    hasPlayedSoundRef.current = false;
-  }, []);
 
-  useEffect(() => {
-    const timers = [];
-
-    timers.push(setTimeout(() => setStep(1), 100)); 
-    timers.push(setTimeout(() => setStep(2), 200));
-    timers.push(setTimeout(() => setStep(3), 300));
-    timers.push(setTimeout(() => setStep(4), 800));
-
-    return () => timers.forEach(clearTimeout);
-  }, []);
-
-  return (
-    <div className={styles.screen}>
-      <div
-        className={`${styles.box} ${step >= 1 ? styles.up : ''} ${step === 4 ? styles.white : ''}`}
-        style={{ transitionDelay: '0s' }}
-      >
-        LOADING
-      </div>
-      <div
-        className={`${styles.box} ${step >= 2 ? styles.up : ''} ${step === 4 ? styles.white : ''}`}
-        style={{ transitionDelay: '0.1s' }}
-      >
-        PLS
-      </div>
-      <div
-        className={`${styles.box} ${step >= 3 ? styles.up : ''} ${step === 4 ? styles.white : ''}`}
-        style={{ transitionDelay: '0.2s' }}
-      >
-        WAIT
-      </div>
-    </div>
-  );
+  if (stage === "stairsUp") return <Loader isReversed={true} />;
+  if (stage === "loadingScreen") return <LoadingScreen/>;
+  if (stage === "loader") return <Loader/>;
+  
+  return <>{children}</>;
 }
-

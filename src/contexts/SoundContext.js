@@ -14,7 +14,7 @@ export const useSoundContext = () => {
 export const SoundProvider = ({ children }) => {
   const [isSoundEnabled, setIsSoundEnabled] = useState(false);
   const audioPool = useRef([]);
-  const poolSize = 5; // Pool of audio elements for overlapping sounds
+  const poolSize = 5;
   const hasUserInteracted = useRef(false);
   const audioContext = useRef(null);
 
@@ -35,14 +35,15 @@ export const SoundProvider = ({ children }) => {
       audio.preload = 'auto';
       audio.muted = false;
       
-      // Prevent audio from showing in browser media controls
       audio.setAttribute('data-no-media-controls', 'true');
       
       audioPool.current.push(audio);
     }
 
-    // Listen for user interaction to enable audio
+    // Listen for user interaction to enable audio (but DON'T play sound automatically)
     const enableAudio = () => {
+      if (hasUserInteracted.current) return; // Prevent multiple executions
+      
       hasUserInteracted.current = true;
       
       // Resume audio context if suspended
@@ -52,24 +53,16 @@ export const SoundProvider = ({ children }) => {
       
       // Try to play a silent audio to unlock audio context
       const silentAudio = new Audio();
+      silentAudio.volume = 0;
       silentAudio.play().catch(() => {});
       
-      // Try to play a very short click sound to unlock
-      try {
-        const unlockAudio = new Audio('/sounds/click.mp3');
-        unlockAudio.volume = 0.01; // Very quiet
-        unlockAudio.currentTime = 0;
-        unlockAudio.muted = false;
-        unlockAudio.play().catch(() => {});
-      } catch (error) {
-        console.warn('Unlock audio failed:', error);
-      }
+      console.log('Audio system unlocked after user interaction');
     };
 
-    // Add event listeners for user interaction
-    const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'];
+    // Add event listeners for user interaction (ONLY to unlock audio, not to play sounds)
+    const events = ['mousedown', 'keypress', 'touchstart', 'click'];
     events.forEach(event => {
-      document.addEventListener(event, enableAudio, { once: true });
+      document.addEventListener(event, enableAudio, { once: true, passive: true });
     });
 
     return () => {
@@ -89,122 +82,56 @@ export const SoundProvider = ({ children }) => {
     };
   }, []);
 
-  const tryUserInteractionAudio = useCallback(() => {
-    try {
-      // Try to create audio with different approach
-      const audio = new Audio();
-      audio.src = '/sounds/click.mp3';
-      audio.volume = 0.7;
-      audio.currentTime = 0;
-      audio.muted = false;
-      
-      // Add event listeners to ensure audio loads
-      audio.addEventListener('canplaythrough', () => {
-        audio.play().catch((error) => {
-          console.warn('User interaction audio failed:', error);
-        });
-      }, { once: true });
-      
-      audio.load();
-    } catch (error) {
-      console.warn('User interaction audio failed:', error);
-    }
-  }, []);
-
-  const tryFallbackAudio = useCallback(() => {
-    try {
-      const fallbackAudio = new Audio('/sounds/click.mp3');
-      fallbackAudio.volume = 0.7;
-      fallbackAudio.currentTime = 0;
-      fallbackAudio.muted = false;
-      
-      const playPromise = fallbackAudio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          console.warn('Fallback audio failed:', error);
-          // Strategy 4: Try with user interaction
-          tryUserInteractionAudio();
-        });
-      }
-    } catch (error) {
-      console.warn('Fallback audio creation failed:', error);
-      tryUserInteractionAudio();
-    }
-  }, [tryUserInteractionAudio]);
-
+  // Manual click sound function - only called when explicitly requested
   const playClickSound = useCallback(() => {
-    if (!isSoundEnabled || audioPool.current.length === 0) return;
+    // Check if sound is enabled AND user has interacted
+    if (!isSoundEnabled || !hasUserInteracted.current || audioPool.current.length === 0) {
+      return;
+    }
     
     try {
-      // Strategy 1: Try to use pool audio
       const availableAudio = audioPool.current.find(audio => audio.ended || audio.paused);
       
       if (availableAudio) {
         availableAudio.currentTime = 0;
         availableAudio.muted = false;
+        availableAudio.volume = 0.7; // Reasonable volume
         
         const playPromise = availableAudio.play();
         if (playPromise !== undefined) {
           playPromise.catch((error) => {
-            console.warn('Pool audio failed, trying fallback:', error);
-            // Strategy 2: Try fallback audio
-            tryFallbackAudio();
+            console.warn('Click sound failed:', error);
           });
         }
-      } else {
-        // Strategy 2: Create new audio
-        tryFallbackAudio();
       }
     } catch (error) {
       console.warn('Sound play failed:', error);
-      // Strategy 3: Last resort fallback
-      tryFallbackAudio();
     }
-  }, [isSoundEnabled, tryFallbackAudio]);
+  }, [isSoundEnabled]);
 
+  // Force enable audio (for testing purposes)
   const forceEnableAudio = useCallback(() => {
-    
-    // Resume audio context
     if (audioContext.current && audioContext.current.state === 'suspended') {
       audioContext.current.resume();
     }
-    
-    // Try multiple strategies
-    try {
-      // Strategy 1: Silent audio
-      const silentAudio = new Audio();
-      silentAudio.play().catch(() => {});
-      
-      // Strategy 2: Very quiet click sound
-      const quietAudio = new Audio('/sounds/click.mp3');
-      quietAudio.volume = 0.01;
-      quietAudio.currentTime = 0;
-      quietAudio.muted = false;
-      quietAudio.play().catch(() => {});
-      
-      // Strategy 3: Web Audio API
-      if (audioContext.current) {
-        const oscillator = audioContext.current.createOscillator();
-        const gainNode = audioContext.current.createGain();
-        oscillator.connect(gainNode);
-        gainNode.connect(audioContext.current.destination);
-        gainNode.gain.value = 0.001; // Very quiet
-        oscillator.frequency.value = 440; // A4 note
-        oscillator.start();
-        oscillator.stop(audioContext.current.currentTime + 0.1);
-      }
-      
-      hasUserInteracted.current = true;
-    } catch (error) {
-      console.warn('Force enable audio failed:', error);
-    }
+
+    hasUserInteracted.current = true;
+    console.log('Audio forcefully enabled');
   }, []);
 
   const toggleSound = useCallback(() => {
-    setIsSoundEnabled(prev => !prev);
+    setIsSoundEnabled(prev => {
+      const newState = !prev;
+      console.log('Sound', newState ? 'enabled' : 'disabled');
+      return newState;
+    });
   }, []);
 
   const testSound = useCallback(() => {
+    if (!hasUserInteracted.current) {
+      console.warn('Cannot test sound: User has not interacted with the page yet');
+      return;
+    }
     
     const testAudio = new Audio('/sounds/click.mp3');
     testAudio.volume = 0.7;
@@ -214,16 +141,17 @@ export const SoundProvider = ({ children }) => {
     const playPromise = testAudio.play();
     if (playPromise !== undefined) {
       playPromise.then(() => {
+        console.log('Test sound played successfully');
       }).catch((error) => {
         console.warn('Test sound failed:', error);
       });
     }
-  }, [isSoundEnabled]);
+  }, []);
 
   const value = {
     isSoundEnabled,
     toggleSound,
-    playClickSound,
+    playClickSound, // Bu artık sadece manuel olarak çağrıldığında ses çıkarır
     testSound,
     forceEnableAudio
   };
