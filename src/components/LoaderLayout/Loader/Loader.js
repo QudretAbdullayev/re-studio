@@ -9,7 +9,6 @@ const Loader = ({ isReversed = false }) => {
   const hasPlayedSoundRef = useRef(false);
 
   useEffect(() => {
-    // isReversed true olduğunda ses çalmalı
     if (isReversed && isSoundEnabled && !hasPlayedSoundRef.current) {
       hasPlayedSoundRef.current = true;
       
@@ -30,7 +29,6 @@ const Loader = ({ isReversed = false }) => {
       }
     }
 
-    // Cleanup function
     return () => {
       if (loaderAudioRef.current) {
         loaderAudioRef.current.pause();
@@ -41,7 +39,6 @@ const Loader = ({ isReversed = false }) => {
     };
   }, [isReversed, isSoundEnabled]);
 
-  // Reset sound flag when component unmounts or isReversed changes
   useEffect(() => {
     hasPlayedSoundRef.current = false;
   }, [isReversed]);
