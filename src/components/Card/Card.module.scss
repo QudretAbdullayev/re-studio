@@ -64,15 +64,14 @@
     isolation: isolate;
     border-radius: 0rem;
     height: max-content;
-    width: 100%;
+    width: calc(100% - 16rem);
     bottom: 0rem;
-    // bottom: 8rem;
-    // left: 8rem;
-    // right: 8rem;
+    bottom: 8rem;
+    left: 8rem;
     z-index: 0;
-    // border-radius: 0 0 16rem 16rem;
-    // background: linear-gradient(360deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
-    // backdrop-filter: blur(9rem);
+    border-radius: 0 0 16rem 16rem;
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+    // filter: drop-shadow(50% 0 50% 100% );
     .texts {
       position: relative;
       display: flex;
