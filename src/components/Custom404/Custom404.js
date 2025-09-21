@@ -8,10 +8,9 @@ import AnimatedCards from '../AnimatedCards/AnimatedCards';
 
 export default function Custom404({data}) {
   const { playClickSound } = useSoundContext();
-  console.log(data)
   return (
     <>
-      {/* <AnimatedCards data={data} /> */}
+      <AnimatedCards data={data} />
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.title}>WELL, THIS IS AWKWARD</div>

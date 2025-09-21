@@ -25,57 +25,73 @@
   
   &.hidden {
     opacity: 0;
-    transform: scale(0.8) translateY(20px);
+    transform: scale(0.8) translateY(20rem);
   }
-  
-  // Hover efekti
-  &:hover {
-    transform: scale(1.05) translateY(-5px);
-    z-index: 15;
-    
-    &.visible {
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    }
-  }
-  
-  // Kartın içeriğini koruma
+
   & > * {
-    border-radius: 12px;
+    border-radius: 12rem;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4rem 12rem rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
   }
 }
 
+// Pozisyon sınıfları
+.position0 {
+  left: 12%;
+  top: 5%;
+}
+
+.position1 {
+  right: 2%;
+  bottom: 33%;
+}
+
+.position2 {
+  left: 10%;
+  bottom: 15%;
+}
+
+
+.position3 {
+  right: 18%;
+  top: 5%;
+}
+
+.position4 {
+  right: 22%;
+  bottom: 5%;
+}
+
 .extrasmall {
-  width: 358px;
-  height: 260px;
+  width: 358rem;
+  height: 260rem;
   
   // Responsive tasarım iyileştirmesi
   @media screen and (max-width: 700px) {
-    width: 280px;
-    height: 200px;
+    width: 280rem;
+    height: 200rem;
   }
   
   @media screen and (max-width: 480px) {
-    width: 250px;
-    height: 180px;
+    width: 250rem;
+    height: 180rem;
   }
 }
 
 .extraextrasmall {
-  width: 230px;
-  height: 176px;
+  width: 230rem;
+  height: 176rem;
   
   // Responsive tasarım iyileştirmesi
   @media screen and (max-width: 700px) {
-    width: 180px;
-    height: 140px;
+    width: 180rem;
+    height: 140rem;
   }
   
   @media screen and (max-width: 480px) {
-    width: 160px;
-    height: 120px;
+    width: 160rem;
+    height: 120rem;
   }
 }
 
@@ -93,12 +109,12 @@
 // Küçük ekranlar için özel ayarlar
 @media screen and (max-height: 700px) {
   .extrasmall {
-    width: 280px;
-    height: 200px;
+    width: 280rem;
+    height: 200rem;
   }
   
   .extraextrasmall {
-    width: 180px;
-    height: 140px;
+    width: 180rem;
+    height: 140rem;
   }
 }
