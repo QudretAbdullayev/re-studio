@@ -4,8 +4,8 @@ import React, { useState, useMemo, useEffect } from "react";
 import Card from "@/components/Card/Card";
 import styles from "./ProjectsPage.module.scss";
 import TitleArea from "@/components/TitleArea/TitleArea.js";
-import LoadingButton from "@/components/LoadingButton/LoadingButton.js";
 import { fetchData } from '@/utils/httpService';
+import LoadingButton from "@/components/LoadingButton/LoadingButton";
 
 const ProjectsPage = ({ caseStudies, data }) => {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -15,25 +15,32 @@ const ProjectsPage = ({ caseStudies, data }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Load more functionality
-  const loadMore = async () => {
-    if (!nextPage || isLoading) return;
-
-    setIsLoading(true);
-    try {
-      const response = await fetchData(`case_studies/case_studies/?page=${currentPage + 1}&page_size=4`);
+  // Auto-load more data when component mounts or when there's more data to load
+  useEffect(() => {
+    const autoLoadMore = async () => {
+      if (!nextPage || isLoading) return;
       
-      if (response.results) {
-        setProjects(prev => [...prev, ...response.results]);
-        setNextPage(response.next);
-        setCurrentPage(prev => prev + 1);
+      setIsLoading(true);
+      try {
+        const response = await fetchData(`case_studies/case_studies/?page=${currentPage + 1}&page_size=4`);
+        
+        if (response.results) {
+          setProjects(prev => [...prev, ...response.results]);
+          setNextPage(response.next);
+          setCurrentPage(prev => prev + 1);
+        }
+      } catch (error) {
+        console.error('Error auto-loading more projects:', error);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.error('Error loading more projects:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    };
+
+    // Auto-load after a short delay to ensure smooth UX
+    const timer = setTimeout(autoLoadMore, 1000);
+    return () => clearTimeout(timer);
+  }, [nextPage, isLoading, currentPage]);
+
 
   // Create filter tabs dynamically based on API categories
   const filterTabs = useMemo(() => {
@@ -133,11 +140,8 @@ const ProjectsPage = ({ caseStudies, data }) => {
           ))}
         </div>
       </section>
-      {nextPage && (
-        <LoadingButton 
-          onClick={loadMore}
-          isLoading={isLoading}
-        />
+      {isLoading && (
+        <LoadingButton/>
       )}
     </main>
   );

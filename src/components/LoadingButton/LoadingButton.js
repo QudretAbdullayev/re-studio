@@ -5,14 +5,12 @@ const LoadingButton = ({
   isLoading = true, 
   duration = 3,
   className,
-  onClick,
   ...props 
 }) => {
   return (
-    <button 
+    <div 
       className={`${styles.loadingButton} ${className || ''}`}
       disabled={isLoading}
-      onClick={onClick}
       {...props}
     >
         <TextShimmer 
@@ -21,7 +19,7 @@ const LoadingButton = ({
         >
           Loading...
         </TextShimmer>
-    </button>
+    </div>
   )
 }
 

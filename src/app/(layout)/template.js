@@ -7,8 +7,6 @@ import Lenis from '@studio-freight/lenis';
 export default function Template({ children }) {
     const pathname = usePathname();
 
-
-    // For smooth scrolling
     useEffect(() => {
         const lenis = new Lenis();
 
