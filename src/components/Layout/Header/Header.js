@@ -143,7 +143,7 @@ export default function Header({ data, footerResults }) {
             playMobileClickSound(playClickSound);
           }}
         >
-          <SafeImage src={safeData.logo} fill alt="Heats" priority />
+          <SafeImage src={"/re.svg"} fill alt="Re Studio" priority />
         </Link>
 
         <nav className={` ${cases ? styles.navBlack : styles.nav}`}>

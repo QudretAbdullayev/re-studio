@@ -177,8 +177,8 @@ export default function Footer({ data, menu=false }) {
       </div>
       <div className={styles.heatsTextContainer}>
         <ImageMarquee
-          src={data.image}
-          alt="Heats logo"
+          src={"/re studio-slider.svg"}
+          alt="Re Studio"
           delay={2000}
           baseVelocity={-1}
           className={`${styles.heatsImage} ${styles.heatsImageFirst}`}
