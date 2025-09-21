@@ -5,6 +5,7 @@ import SafeImage from '../SafeImage/SafeImage';
 import Link from 'next/link';
 import { useSoundContext } from '@/contexts/SoundContext';
 import AnimatedCards from '../AnimatedCards/AnimatedCards';
+import SafeLink from '../SafeLink/SafeLink';
 
 export default function Custom404({data}) {
   const { playClickSound } = useSoundContext();
@@ -20,12 +21,13 @@ export default function Custom404({data}) {
           <div className={styles.description}>{`The page you are looking for can’t be found.`}</div>
         </div>
         <div className={styles.buttonContainer}>
-            <button 
+            <SafeLink 
+              href="/"
               className={styles.homeButton}
               onMouseEnter={playClickSound}
             >
               GO TO HOME
-            </button>
+            </SafeLink>
             <button 
               className={styles.reButton}
               onMouseEnter={playClickSound}

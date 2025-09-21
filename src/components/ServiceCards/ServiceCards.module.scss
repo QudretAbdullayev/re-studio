@@ -1,5 +1,15 @@
 @use "@/assets/styles/abstracts" as *;
 
+.big{
+  width: 1504rem;
+  height: 768rem;
+  margin-bottom: 120rem;
+  @media screen and (max-width: 700px) {
+    width: 370rem;
+    height: 424rem;
+  }
+}
+
 .categorySection {
   display: grid;
   grid-template-columns: auto;

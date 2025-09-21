@@ -2,6 +2,7 @@ import React from 'react'
 import ServiceCardsTitle from '../ServiceCardsTitle/ServiceCardsTitle'
 import ServiceCard from '../ServiceCard/ServiceCard'
 import styles from './ServiceCards.module.scss'
+import Card from '../Card/Card';
 
 export function ServiceCards({ activeFilter, data }) {
   let globalIndex = 0;
@@ -36,6 +37,7 @@ export function ServiceCards({ activeFilter, data }) {
 
   return (
     <div className="g-container">
+      <Card image="/images/fisherprice.png" className={styles.big}/>
       {filteredServices.map((serviceCategory, categoryIndex) => (
         <div key={categoryIndex} className={styles.categorySection}>
           <ServiceCardsTitle title={serviceCategory.title} />

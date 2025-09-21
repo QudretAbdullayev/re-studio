@@ -192,9 +192,7 @@
       inset: 0;
       padding: 1rem;
       border-radius: 24rem;
-      background: linear-gradient(138.98deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 100%);
-
-
+      background:  linear-gradient(138.98deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 100%);
       -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
@@ -202,6 +200,11 @@
       mask-composite: exclude;
       z-index: 1;
       pointer-events: none;
+    }
+    &:hover{
+      &::before {
+        background: #00000033;
+      }
     }
   }
 

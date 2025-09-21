@@ -40,6 +40,8 @@ export default function Header({ data, footerResults }) {
   const safeData = data || {};
   const navigations = safeData.navigations || [];
 
+  const cases = pathname.startsWith("/case-studies/") && window.innerWidth > 700
+  console.log(cases, pathname)
   const toggleMenu = () => {
     if (menuOpen) {
       setMenuClosing(true);
@@ -130,9 +132,8 @@ export default function Header({ data, footerResults }) {
   return (
     <>
       <header
-        className={`g-container ${styles.header} ${
-          menuOpen ? styles.menuOpen : ""
-        }`}
+        className={`g-container ${styles.header} ${menuOpen ? styles.menuOpen : ""
+          }`}
       >
         <Link
           href="/"
@@ -145,7 +146,7 @@ export default function Header({ data, footerResults }) {
           <SafeImage src={safeData.logo} fill alt="Heats" priority />
         </Link>
 
-        <nav className={styles.nav}>
+        <nav className={` ${cases ? styles.navBlack : styles.nav}`}>
           <div
             className={styles.segment}
             ref={segmentRef}
@@ -154,9 +155,8 @@ export default function Header({ data, footerResults }) {
             {activeTab && (
               <div
                 key={activeTab ?? "none"}
-                className={`${styles.slidingIndicator} ${
-                  activeTab ? styles.slidingIndicatorActive : ""
-                }`}
+                className={`${styles.slidingIndicator} ${activeTab ? styles.slidingIndicatorActive : ""
+                  }`}
                 style={indicatorStyle}
               />
             )}
@@ -168,9 +168,8 @@ export default function Header({ data, footerResults }) {
                   tabRefs.current[nav.url] = el;
                 }}
                 href={`/${nav.url}`}
-                className={`${styles.tab} ${
-                  activeTab === nav.url ? styles.active : ""
-                }`}
+                className={`${styles.tab} ${activeTab === nav.url ? styles.active : ""
+                  }`}
                 onClick={() => {
                   playMobileClickSound(playClickSound);
                   handleTabChange(nav.url);
@@ -202,7 +201,7 @@ export default function Header({ data, footerResults }) {
 
         <div className={styles.buttons}>
           <button
-            className={styles.sound}
+            className={`${cases ? styles.soundBlack : styles.sound}`}
             onClick={() => {
               playMobileClickSound(playClickSound);
               toggleSound();
@@ -252,7 +251,7 @@ export default function Header({ data, footerResults }) {
           </button>
           <Link
             href="/apply"
-            className={styles.apply}
+            className={`${cases ? styles.applyBlack : styles.apply}`}
             onClick={() => {
               playMobileClickSound(playClickSound);
             }}

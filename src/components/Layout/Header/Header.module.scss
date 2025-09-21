@@ -157,7 +157,125 @@
       }
     }
   }
+  .navBlack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    .segment {
+      width: max-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem;
+      gap: 4rem;
+      background: rgba(#3C3C43, 0.3);
+      backdrop-filter: blur(26rem);
+      border-radius: 96rem;
+      border: none;
+      position: relative;
+
+      .slidingIndicator {
+        position: absolute;
+        inset: 0;
+        margin: 4rem 0;
+        background-color: #1C1C1E;
+        border-radius: 96rem;
+        box-shadow: inset 3rem 4rem 4rem 0rem rgba(#ffffff, 0.08);
+        z-index: 0;
+
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          padding: 1rem;
+          border-radius: 96rem;
+          background: linear-gradient(138.98deg, rgba(#EBEBF5, 0.12) 0%, rgba(#ffffff, 0) 50%, rgba(#EBEBF5, 0.12) 100%);
+          -webkit-mask: linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        // &::after {
+        //   content: "";
+        //   position: absolute;
+        //   inset: 0;
+        //   left: 50%;
+        //   transform: translateX(-50%);
+        //   height: 1rem;
+        //   width: 0rem;
+        //   border-radius: 8rem;
+        //   background: $border-black;
+        //   animation: growWidth 0.6s ease forwards;
+        // }
+      }
+      .slidingIndicatorActive{
+        &::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          height: 1rem;
+          width: 0rem;
+          border-radius: 8rem;
+          background: #FFFFFF;
+          animation: growWidth 0.6s ease-in-out forwards;
+        }
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 1rem;
+        border-radius: 96rem;
+        background: linear-gradient(103.46deg, rgba(#EBEBF5, 0.12) -18.01%, rgba(#FFFFFF, 0) 59.82%, rgba(#EBEBF5, 0.12) 137.64%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .tab {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8rem 12rem;
+        gap: 8rem;
+        border-radius: 96rem;
+
+        .tabContent {
+          width: 100%;
+
+          span {
+            font-family: "Azeret", monospace;
+            @include font(11, 300, 16);
+            color: rgba(#EBEBF5, 0.6);
+            text-align: center;
+            height: 16rem;
+          }
+          
+        }
+        &:hover{
+          .tabContent{
+            span{
+              color: #FFFFFF;
+            }
+          }
+        }
+      }
+
+      .active {
+        position: relative;
+        z-index: 1;
+      }
+    }
+  }
   .buttons {
     display: flex;
     justify-content: flex-end;
@@ -278,7 +396,7 @@
       padding: 0 11rem;
       width: max-content;
       height: 40rem;
-      background: rgba($background-tones-grey, 0.08);
+      background: rgba(#787880, 0.08);
       border-radius: 96rem;
       overflow: hidden;
       z-index: 0;
@@ -292,9 +410,9 @@
         padding: 1rem;
         border-radius: inherit;
         background: linear-gradient(111.69deg,
-            rgba($text-secondary, 0.12) 0%,
-            rgba($background-tones-grey, 0) 49.31%,
-            rgba($text-secondary, 0.12) 98.62%);
+            rgba(#EBEBF5, 0.12) 0%,
+            rgba(#787880, 0) 49.31%,
+            rgba(#EBEBF5, 0.12) 98.62%);
         -webkit-mask: linear-gradient(#fff 0 0) content-box,
           linear-gradient(#fff 0 0);
         -webkit-mask-composite: xor;
@@ -326,14 +444,13 @@
       .soundContent {
         width: 100%;
         padding: 0 1rem;
-
         span {
           display: flex;
           align-items: center;
           justify-content: center;
           font-family: "Azeret", monospace;
           @include font(11, 300, 16);
-          color: $text-primary;
+          color: #FFFFFF;
           height: 16rem;
         }
       }
@@ -352,7 +469,7 @@
       width: max-content;
       padding: 8rem 24rem;
       height: 40rem;
-      background: $background-black;
+      background: #FFFFFF;
       border-radius: 96rem;
       border: none;
       display: flex;
@@ -366,7 +483,7 @@
           font-family: "Azeret", monospace;
           @include font(11, 400, 16);
           text-transform: uppercase;
-          color: $text-white;
+          color: #000000;
         }
       }
     }
@@ -516,44 +633,6 @@
           padding: 1rem;
           border-radius: inherit;
           background: linear-gradient(101.97deg, rgba(60, 60, 67, 0.3) -16.79%, rgba(255, 255, 255, 0) 51.48%, rgba(60, 60, 67, 0.3) 119.75%);
-          -webkit-mask: linear-gradient(#fff 0 0) content-box,
-            linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          z-index: 1;
-          pointer-events: none;
-        }
-
-        &::after,
-        &::before {
-          z-index: 2;
-        }
-      }
-
-      .menuBlack {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 12rem 16rem;
-        background: rgba($background-tones-grey, 0.08);
-        font-family: "Azeret", monospace;
-        @include font(11, 300, 16);
-        color: $text-primary;
-        border-radius: 96rem;
-        overflow: hidden;
-        z-index: 2;
-
-        &::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          padding: 1rem;
-          border-radius: inherit;
-          background: linear-gradient(111.69deg,
-              rgba($text-secondary, 0.12) 0%,
-              rgba($background-tones-grey, 0) 49.31%,
-              rgba($text-secondary, 0.12) 98.62%);
           -webkit-mask: linear-gradient(#fff 0 0) content-box,
             linear-gradient(#fff 0 0);
           -webkit-mask-composite: xor;
