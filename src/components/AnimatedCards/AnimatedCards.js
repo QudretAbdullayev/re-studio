@@ -44,10 +44,13 @@ export default function AnimatedCards({ data }) {
             className={styles[card.size]}
             image={card.image}
             slug={card.slug}
-            {...(card.size === 'extraextrasmall' ? {} : {
+            {...(card.size === 'extraextrasmall' ? {
+              slug: card.slug,
+            } : {
               title: card.title,
               description: card.short_description,
-              tags: card.tags
+              tags: card.tags,
+              slug: card.slug,
             })}
           />
         </div>

@@ -7,7 +7,7 @@
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 10;
+  z-index: 55555550;
   overflow: hidden;
 }
 
@@ -36,66 +36,142 @@
   }
 }
 
-// Pozisyon sınıfları
+@keyframes randomFloat1 {
+  0% { transform: translate(0, 0); }
+  6% { transform: translate(12rem, -8rem); }
+  12% { transform: translate(18rem, -12rem); }
+  18% { transform: translate(-5rem, -20rem); }
+  25% { transform: translate(-8rem, -28rem); }
+  31% { transform: translate(20rem, -15rem); }
+  37% { transform: translate(25rem, -5rem); }
+  43% { transform: translate(8rem, -30rem); }
+  50% { transform: translate(12rem, -35rem); }
+  56% { transform: translate(-12rem, -25rem); }
+  62% { transform: translate(-15rem, -18rem); }
+  68% { transform: translate(5rem, -28rem); }
+  75% { transform: translate(8rem, -22rem); }
+  81% { transform: translate(-18rem, -12rem); }
+  87% { transform: translate(-22rem, -8rem); }
+  93% { transform: translate(-8rem, -15rem); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes randomFloat2 {
+  0% { transform: translate(0, 0); }
+  7% { transform: translate(-15rem, 3rem); }
+  15% { transform: translate(-25rem, 8rem); }
+  22% { transform: translate(-8rem, 15rem); }
+  30% { transform: translate(-12rem, 22rem); }
+  37% { transform: translate(-30rem, 12rem); }
+  45% { transform: translate(-35rem, 15rem); }
+  52% { transform: translate(-20rem, 25rem); }
+  60% { transform: translate(-18rem, 28rem); }
+  67% { transform: translate(-32rem, 8rem); }
+  75% { transform: translate(-28rem, 5rem); }
+  82% { transform: translate(-12rem, 20rem); }
+  90% { transform: translate(-8rem, 18rem); }
+  97% { transform: translate(-20rem, 10rem); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes randomFloat3 {
+  0% { transform: translate(0, 0); }
+  8% { transform: translate(-12rem, -10rem); }
+  16% { transform: translate(-18rem, -15rem); }
+  24% { transform: translate(-5rem, -25rem); }
+  32% { transform: translate(-8rem, -32rem); }
+  40% { transform: translate(-25rem, -18rem); }
+  48% { transform: translate(-30rem, -12rem); }
+  56% { transform: translate(-10rem, -28rem); }
+  64% { transform: translate(-15rem, -25rem); }
+  72% { transform: translate(-28rem, -8rem); }
+  80% { transform: translate(-25rem, -8rem); }
+  88% { transform: translate(-12rem, -20rem); }
+  96% { transform: translate(-20rem, -5rem); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes randomFloat4 {
+  0% { transform: translate(0, 0); }
+  9% { transform: translate(18rem, 5rem); }
+  18% { transform: translate(28rem, 12rem); }
+  27% { transform: translate(8rem, 18rem); }
+  36% { transform: translate(15rem, 25rem); }
+  45% { transform: translate(30rem, 15rem); }
+  54% { transform: translate(32rem, 8rem); }
+  63% { transform: translate(22rem, 18rem); }
+  72% { transform: translate(35rem, 5rem); }
+  81% { transform: translate(25rem, 12rem); }
+  90% { transform: translate(12rem, 20rem); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes randomFloat5 {
+  0% { transform: translate(0, 0); }
+  7% { transform: translate(8rem, -12rem); }
+  14% { transform: translate(15rem, -20rem); }
+  21% { transform: translate(-5rem, -25rem); }
+  28% { transform: translate(-12rem, -30rem); }
+  35% { transform: translate(15rem, -18rem); }
+  42% { transform: translate(20rem, -8rem); }
+  49% { transform: translate(5rem, -28rem); }
+  56% { transform: translate(-8rem, -25rem); }
+  63% { transform: translate(22rem, -12rem); }
+  70% { transform: translate(25rem, -15rem); }
+  77% { transform: translate(-12rem, -20rem); }
+  84% { transform: translate(-18rem, -12rem); }
+  91% { transform: translate(-5rem, -18rem); }
+  100% { transform: translate(0, 0); }
+}
+
 .position0 {
-  left: 12%;
-  top: 5%;
+  left: 10%;
+  top: 12%;
+  animation: randomFloat1 45s ease infinite;
+  animation-delay: 0s;
 }
 
 .position1 {
   right: 2%;
-  bottom: 33%;
+  bottom: 35%;
+  animation: randomFloat2 52s ease infinite;
+  animation-delay: 0s;
 }
 
 .position2 {
-  left: 10%;
-  bottom: 15%;
+  left: 7%;
+  bottom: 13%;
+  animation: randomFloat3 38s ease infinite;
+  animation-delay: 0s;
 }
 
-
 .position3 {
-  right: 18%;
+  right: 24%;
   top: 5%;
+  animation: randomFloat4 48s ease infinite;
+  animation-delay: 0s;
 }
 
 .position4 {
   right: 22%;
   bottom: 5%;
+  animation: randomFloat5 55s ease infinite;
+  animation-delay: 0s;
 }
+
 
 .extrasmall {
   width: 358rem;
   height: 260rem;
   
-  // Responsive tasarım iyileştirmesi
-  @media screen and (max-width: 700px) {
-    width: 280rem;
-    height: 200rem;
-  }
-  
-  @media screen and (max-width: 480px) {
-    width: 250rem;
-    height: 180rem;
-  }
 }
 
 .extraextrasmall {
   width: 230rem;
   height: 176rem;
   
-  // Responsive tasarım iyileştirmesi
-  @media screen and (max-width: 700px) {
-    width: 180rem;
-    height: 140rem;
-  }
-  
-  @media screen and (max-width: 480px) {
-    width: 160rem;
-    height: 120rem;
-  }
 }
 
-// Animasyon performansı için
 @media (prefers-reduced-motion: reduce) {
   .cardWrapper {
     transition: opacity 0.3s ease;
@@ -106,15 +182,14 @@
   }
 }
 
-// Küçük ekranlar için özel ayarlar
 @media screen and (max-height: 700px) {
   .extrasmall {
-    width: 280rem;
-    height: 200rem;
+    width: 230rem;
+    height: 176rem;
   }
   
   .extraextrasmall {
-    width: 180rem;
-    height: 140rem;
+    width: 230rem;
+    height: 176rem;
   }
 }

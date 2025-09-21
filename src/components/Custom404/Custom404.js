@@ -30,8 +30,8 @@ export default function Custom404({data}) {
               className={styles.reButton}
               onMouseEnter={playClickSound}
             >
-              <Link href="/" className={styles.reProfile}>
-                <span className={styles.reProfileImage}><SafeImage fill src="/heats.svg" alt="Heats"/></span>
+              <Link href="https://heats.az" target="_blank" rel="noopener noreferrer" className={styles.reProfile}>
+                <span className={styles.reProfileImage}><SafeImage fill src="/Heats.svg" alt="Heats"/></span>
               </Link>
               <span className={styles.reButtonText}>GO TO HEATS</span>
               <span className={styles.externalIcon}><External/></span>
