@@ -8,16 +8,17 @@ import AnimatedCards from '../AnimatedCards/AnimatedCards';
 
 export default function Custom404({data}) {
   const { playClickSound } = useSoundContext();
-  
+  console.log(data)
   return (
     <>
+      {/* <AnimatedCards data={data} /> */}
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.title}>WELL, THIS IS AWKWARD</div>
           <div className={styles.errorCode}>404</div>
         </div>
         <div className={styles.mainTexts}>
-          <div className={styles.description}>The page you are looking for<br/>can&apos;t be found.</div>
+          <div className={styles.description}>{`The page you are looking for can’t be found.`}</div>
         </div>
         <div className={styles.buttonContainer}>
             <button 

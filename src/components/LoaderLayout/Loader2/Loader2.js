@@ -1,69 +1,42 @@
-"use client";
-import { useState, useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
-import LoadingScreen from "./Loader2/Loader2";
-import Loader from "./Loader/Loader";
-import { useScrollTracker } from "../UseScrollTracker/UseScrollTracker";
+"use client"
 
-export default function CombinedLoader({children}) {
-  const [stage, setStage] = useState("loadingScreen");
-  const [isLoadingComplete, setIsLoadingComplete] = useState(false);
-  const pathname = usePathname();
-  const isFirstMount = useRef(true);
-  const previousPathname = useRef(pathname);
+import { useEffect, useState } from 'react';
+import styles from './Loader.module.scss';
 
-  useScrollTracker(isLoadingComplete);
+export default function LoadingScreen() {
+  const [step, setStep] = useState(0);
 
   useEffect(() => {
-    setIsLoadingComplete(false);
-    
-    if (isFirstMount.current) {
-      setStage("loadingScreen");
-      isFirstMount.current = false;
-      
-      const timeout1 = setTimeout(() => {
-        setStage("loader");
-      }, 1700);
+    const timers = [];
 
-      const timeout2 = setTimeout(() => {
-        setStage("done");
-        setIsLoadingComplete(true);
-      }, 3100);
-      
-      return () => {
-        clearTimeout(timeout1);
-        clearTimeout(timeout2);
-      };
-    } else {
-      
-      setStage("stairsUp");
-      
-      const timeout1 = setTimeout(() => {
-        setStage("loadingScreen");
-      }, 1400);
+    timers.push(setTimeout(() => setStep(1), 100)); 
+    timers.push(setTimeout(() => setStep(2), 200));
+    timers.push(setTimeout(() => setStep(3), 300));
+    timers.push(setTimeout(() => setStep(4), 800));
 
-      const timeout2 = setTimeout(() => {
-        setStage("loader");
-      }, 3100);
+    return () => timers.forEach(clearTimeout);
+  }, []);
 
-      const timeout3 = setTimeout(() => {
-        setStage("done");
-        setIsLoadingComplete(true);
-      }, 4400);
-      
-      return () => {
-        clearTimeout(timeout1);
-        clearTimeout(timeout2);
-        clearTimeout(timeout3);
-      };
-    }
-  }, [pathname]);
-
-
-
-  if (stage === "stairsUp") return <Loader isReversed={true} />;
-  if (stage === "loadingScreen") return <LoadingScreen/>;
-  if (stage === "loader") return <Loader/>;
-  
-  return <>{children}</>;
+  return (
+    <div className={styles.screen}>
+      <div
+        className={`${styles.box} ${step >= 1 ? styles.up : ''} ${step === 4 ? styles.white : ''}`}
+        style={{ transitionDelay: '0s' }}
+      >
+        LOADING
+      </div>
+      <div
+        className={`${styles.box} ${step >= 2 ? styles.up : ''} ${step === 4 ? styles.white : ''}`}
+        style={{ transitionDelay: '0.1s' }}
+      >
+        PLS
+      </div>
+      <div
+        className={`${styles.box} ${step >= 3 ? styles.up : ''} ${step === 4 ? styles.white : ''}`}
+        style={{ transitionDelay: '0.2s' }}
+      >
+        WAIT
+      </div>
+    </div>
+  );
 }

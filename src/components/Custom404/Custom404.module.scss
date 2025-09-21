@@ -39,8 +39,12 @@
 
   .mainTexts {
     width: 994rem;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     .description {
+      width: 600rem;
       font-family: 'Spezia Serif Condensed B';
       @include font(56, 400, 56);
       text-align: center;
@@ -161,7 +165,8 @@
   @media screen and (max-width: 700px) {
     padding: 146rem 0 256rem;
     gap: 32rem;
-
+    min-height: 100vh;
+    height: auto;
     .header {
       width: 370rem;
 
@@ -174,7 +179,8 @@
     .mainTexts {
       width: 370rem;
 
-      .description {
+      .description { 
+        width: 100%;
         @include font(34, 400, 40);
         letter-spacing: -1rem;
       }
