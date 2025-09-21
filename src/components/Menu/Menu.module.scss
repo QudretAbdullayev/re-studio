@@ -138,9 +138,10 @@
           left: 50%;
           transform: translateX(-50%);
           height: 1rem;
-          width: 52rem;
+          width: 0rem;
           border-radius: 8rem;
           background: $border-black;
+          animation: growWidth 0.6s ease-in-out 0.4s forwards;
         }
       }
 
@@ -197,5 +198,15 @@
   to {
     transform: translate3d(0, -100%, 0);
     opacity: 1;
+  }
+}
+
+@keyframes growWidth {
+  from {
+    width: 0rem;
+  }
+
+  to {
+    width: 52rem;
   }
 }
