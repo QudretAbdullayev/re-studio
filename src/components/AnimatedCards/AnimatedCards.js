@@ -44,6 +44,7 @@ export default function AnimatedCards({ data }) {
             className={styles[card.size]}
             image={card.image}
             slug={card.slug}
+            overlay={true}
             {...(card.size === 'extraextrasmall' ? {
               slug: card.slug,
             } : {

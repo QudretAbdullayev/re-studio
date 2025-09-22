@@ -14,6 +14,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'backend.heats.az',
+      },
+      {
+        protocol: 'http',
+        hostname: '188.245.69.205',
       }
     ],
   },

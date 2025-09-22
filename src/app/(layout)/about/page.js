@@ -3,10 +3,8 @@ import { fetchData } from "@/utils/httpService";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata() {
-  const baseUrl = process.env.NEXT_PUBLIC_MAIN_URL;
-
   const data = await fetch(
-    `${baseUrl}about/`,
+    `${process.env.NEXT_PUBLIC_MAIN_URL}about/`,
     {
       method: "GET",
       headers: {
@@ -26,12 +24,12 @@ export async function generateMetadata() {
       return notFound();
     });
 
-  // const socialMedia = {
-  //   // images: [data?.seo?.open_graph_image],
-  //   title: data?.seo_title,
-  //   description: data?.seo_description,
-  //   url: `https://wmx.school`,
-  // };
+  const socialMedia = {
+    // images: [data?.seo?.open_graph_image],
+    title: data?.seo_title,
+    description: data?.seo_description,
+    url: `https://heats.az/about`,
+  };
 
   return {
     title: data?.seo_title,
@@ -40,7 +38,7 @@ export async function generateMetadata() {
     //   ...socialMedia,
     //   type: "website",
     // },
-    // twitter: socialMedia,
+    twitter: socialMedia,
   };
 }
 
