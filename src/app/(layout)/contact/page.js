@@ -25,19 +25,19 @@ export async function generateMetadata() {
     });
 
   const socialMedia = {
-    // images: [data?.seo?.open_graph_image],
+    images: [data?.opg_image],
     title: data?.seo_title,
     description: data?.seo_description,
-    url: `https://heats.az`,
+    url: `https://heats.az/contact`,
   };
 
   return {
     title: data?.seo_title,
     description: data?.seo_description,
-    // openGraph: {
-    //   ...socialMedia,
-    //   type: "website",
-    // },
+    openGraph: {
+      ...socialMedia,
+      type: "website",
+    },
     twitter: socialMedia,
   };
 }

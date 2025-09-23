@@ -25,7 +25,7 @@ export async function generateMetadata() {
     });
 
   const socialMedia = {
-    // images: [data?.seo?.open_graph_image],
+    images: [data?.opg_image],
     title: data?.seo_title,
     description: data?.seo_description,
     url: `https://heats.az/apply`,
@@ -34,10 +34,10 @@ export async function generateMetadata() {
   return {
     title: data?.seo_title,
     description: data?.seo_description,
-    // openGraph: {
-    //   ...socialMedia,
-    //   type: "website",
-    // },
+    openGraph: {
+      ...socialMedia,
+      type: "website",
+    },
     twitter: socialMedia,
   };
 }
@@ -47,9 +47,7 @@ export default async function page() {
   const [data] = await Promise.allSettled([fetchData("apply/")]);
 
   const dataResults = data.status === "fulfilled" ? data.value : null;
-  if (data.detail === "Not found." || otherWorksData.detail === "Not found.") {
-    notFound()
-  }
+
   return (
     <ContactFormPage data={dataResults}/>
   )

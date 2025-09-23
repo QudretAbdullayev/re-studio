@@ -25,7 +25,7 @@ export async function generateMetadata() {
     });
 
   const socialMedia = {
-    // images: [data?.seo?.open_graph_image],
+    images: [data?.opg_image],
     title: data?.seo_title,
     description: data?.seo_description,
     url: `https://heats.az/services`,
@@ -34,24 +34,20 @@ export async function generateMetadata() {
   return {
     title: data?.seo_title,
     description: data?.seo_description,
-    // openGraph: {
-    //   ...socialMedia,
-    //   type: "website",
-    // },
+    openGraph: {
+      ...socialMedia,
+      type: "website",
+    },
     twitter: socialMedia,
   };
 }
 
-const Page = async ({ params: { slug } }) => {
+const Page = async () => {
   const [servicesData] = await Promise.allSettled([
     fetchData(`services/`)
   ]);
 
   const data = servicesData.status === "fulfilled" ? servicesData.value : null;
-
-  if (data.detail === "Not found.") {
-    notFound()
-  }
 
   return (
     <ServicesPage data={data}/>

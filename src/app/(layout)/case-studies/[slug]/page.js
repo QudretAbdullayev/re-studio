@@ -26,7 +26,7 @@ export async function generateMetadata({params}) {
     });
 
   const socialMedia = {
-    // images: [data?.seo?.open_graph_image],
+    images: [data?.opg_image],
     title: data?.seo_title || data?.title,
     description: data?.seo_description || data?.short_description,
     url: `https://heats.az/case-studies/${slug}`,
@@ -35,10 +35,10 @@ export async function generateMetadata({params}) {
   return {
     title: data?.seo_title || data?.title,
     description: data?.seo_description || data?.short_description,
-    // openGraph: {
-    //   ...socialMedia,
-    //   type: "website",
-    // },
+    openGraph: {
+      ...socialMedia,
+      type: "website",
+    },
     twitter: socialMedia,
   };
 }
@@ -52,10 +52,6 @@ const Page = async ({ params }) => {
 
   const data = caseStudyData.status === "fulfilled" ? caseStudyData.value : null;
   const otherWorksData = otherWorks.status === "fulfilled" ? otherWorks.value : null;
-
-  if (data.detail === "Not found.") {
-    notFound()
-  }
 
   return (
     <ProjectPage data={data} otherWorksData={otherWorksData.results}/>

@@ -25,7 +25,7 @@ export async function generateMetadata() {
     });
 
   const socialMedia = {
-    // images: [data?.seo?.open_graph_image],
+    images: [data?.section?.opg_image],
     title: data?.section?.seo_title,
     description: data?.section?.seo_description,
     url: `https://heats.az/case-studies`,
@@ -50,10 +50,6 @@ const Page = async ({ params: { slug } }) => {
   ]);
   const caseStudies = caseStudiesData.status === "fulfilled" ? caseStudiesData.value : null;
   const data = pageData.status === "fulfilled" ? pageData.value : null;
-  
-  if (!caseStudies || !data || data.detail === "Not found.") {
-    notFound()
-  }
   
   return (
     <ProjectsPage caseStudies={caseStudies} data={data}/>
