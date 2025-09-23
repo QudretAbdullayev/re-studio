@@ -29,7 +29,7 @@ export async function generateMetadata({params}) {
     images: [data?.opg_image],
     title: data?.seo_title || data?.title,
     description: data?.seo_description || data?.short_description,
-    url: `https://heats.az/case-studies/${slug}`,
+    url: `https://restudio.az/case-studies/${slug}`,
   };
 
   return {

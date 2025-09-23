@@ -2,12 +2,12 @@
 
 html {
   font-size: calc(100vw / 402);
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  // scrollbar-width: none;
+  // -ms-overflow-style: none;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
 }
 
 @media (min-width: 700px) {

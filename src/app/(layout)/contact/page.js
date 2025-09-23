@@ -28,7 +28,7 @@ export async function generateMetadata() {
     images: [data?.opg_image],
     title: data?.seo_title,
     description: data?.seo_description,
-    url: `https://heats.az/contact`,
+    url: `https://restudio.az/contact`,
   };
 
   return {
