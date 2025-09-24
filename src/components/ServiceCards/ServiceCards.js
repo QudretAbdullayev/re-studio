@@ -7,7 +7,6 @@ import Card from '../Card/Card';
 export function ServiceCards({ activeFilter, data }) {
   let globalIndex = 0;
 
-  // Transform API data to match the expected format
   const transformApiData = (apiData) => {
     if (!apiData || !apiData.groups) return [];
     

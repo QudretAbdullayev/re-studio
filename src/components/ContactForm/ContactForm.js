@@ -39,7 +39,6 @@ export default function ContactForm({data}) {
   const [toaster, setToaster] = useState({ show: false, success: false, message: "" });
   const [showFade, setShowFade] = useState(true);
 
-  // Keyboard sound handler
   const playKeyboardSound = () => {
     if (isSoundEnabled) {
       try {

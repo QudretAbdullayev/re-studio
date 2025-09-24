@@ -2,6 +2,7 @@
 import FilterTabs from "@/components/FilterTabs/FilterTabs";
 import React, { useState, useMemo, useEffect } from "react";
 import Card from "@/components/Card/Card";
+import Talk from "@/components/Talk/Talk";
 import styles from "./ProjectsPage.module.scss";
 import TitleArea from "@/components/TitleArea/TitleArea.js";
 import { fetchData } from '@/utils/httpService';
@@ -15,7 +16,6 @@ const ProjectsPage = ({ caseStudies, data }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Auto-load more data when component mounts or when there's more data to load
   useEffect(() => {
     const autoLoadMore = async () => {
       if (!nextPage || isLoading) return;
@@ -36,13 +36,10 @@ const ProjectsPage = ({ caseStudies, data }) => {
       }
     };
 
-    // Auto-load after a short delay to ensure smooth UX
     const timer = setTimeout(autoLoadMore, 1000);
     return () => clearTimeout(timer);
   }, [nextPage, isLoading, currentPage]);
 
-
-  // Create filter tabs dynamically based on API categories
   const filterTabs = useMemo(() => {
     const tabs = [
       {
@@ -52,7 +49,6 @@ const ProjectsPage = ({ caseStudies, data }) => {
       },
     ];
 
-    // Add categories with count > 0
     categories.forEach((category) => {
       if (category.count > 0) {
         tabs.push({
@@ -67,12 +63,10 @@ const ProjectsPage = ({ caseStudies, data }) => {
     return tabs;
   }, [activeFilter, categories, caseStudies.count]);
 
-  // Filter projects by category
   const handleFilterChange = async (filterLabel) => {
     setActiveFilter(filterLabel);
     
     if (filterLabel === "All") {
-      // Reset to initial data
       setProjects(caseStudies?.results || []);
       setNextPage(caseStudies?.next || null);
       setCurrentPage(1);
@@ -98,21 +92,77 @@ const ProjectsPage = ({ caseStudies, data }) => {
     }
   };
 
-  // Same card sizing logic as HomeCards
-  const getCardSize = (index) => {
-    if (index === 0) return "big";
+  const projectGroups = useMemo(() => {
+    const createProjectGroups = () => {
+      const groups = [];
+      let cardIndex = 0;
 
-    const sizePattern = [
-      "extrasmall",
-      "medium",
-      "small",
-      "extrasmall",
-      "small",
-      "small",
-      "small",
-    ];
-    return sizePattern[(index - 1) % sizePattern.length];
-  };
+    if (projects[cardIndex]) {
+      groups.push({
+        type: 'big',
+        cards: [projects[cardIndex]]
+      });
+      cardIndex++;
+    }
+
+    let patternStep = 0; 
+
+    while (cardIndex < projects.length) {
+      if (patternStep === 0) {
+        if (cardIndex < projects.length) {
+          const extrasmallandMedium = projects.slice(cardIndex, cardIndex + 2);
+          if (extrasmallandMedium.length > 0) {
+            groups.push({
+              type: 'extrasmallandMedium',
+              cards: extrasmallandMedium
+            });
+            cardIndex += extrasmallandMedium.length;
+          }
+        }
+        patternStep = 1;
+      } else if (patternStep === 1) {
+        if (cardIndex < projects.length) {
+          const smallCards = projects.slice(cardIndex, cardIndex + 3);
+          if (smallCards.length > 0) {
+            groups.push({
+              type: 'smallCards',
+              cards: smallCards
+            });
+            cardIndex += 3;
+          }
+        }
+        patternStep = 2;
+      } else if (patternStep === 2) {
+        if (cardIndex < projects.length) {
+          const mediumExtraSmall = projects.slice(cardIndex, cardIndex + 2);
+          if (mediumExtraSmall.length > 0) {
+            groups.push({
+              type: 'mediumExtraSmall',
+              cards: mediumExtraSmall
+            });
+            cardIndex += mediumExtraSmall.length;
+          }
+        }
+        patternStep = 3;
+      } else if (patternStep === 3) {
+        if (cardIndex < projects.length) {
+          const finalGroup = projects.slice(cardIndex, cardIndex + 2); 
+          groups.push({
+            type: 'finalGroup',
+            cards: finalGroup,
+            includeTalk: true 
+          });
+          cardIndex += finalGroup.length;
+        }
+        patternStep = 0;
+      }
+    }
+
+      return groups;
+    };
+
+    return createProjectGroups();
+  }, [projects]);
 
   return (
     <main className={styles.projectsPage}>
@@ -127,17 +177,170 @@ const ProjectsPage = ({ caseStudies, data }) => {
       />
       <section className="g-container">
         <div className={styles.container}>
-          {projects.map((project, index) => (
-            <Card
-              key={`${project.slug}-${index}`}
-              className={styles[getCardSize(index)]}
-              title={project.title}
-              description={project.short_description}
-              tags={project.tags}
-              image={project.image}
-              slug={project.slug}
-            />
-          ))}
+          {projectGroups.map((group, groupIndex) => {
+            if (group.type === 'big') {
+              return (
+                <div key={`big-${groupIndex}`} className={styles.grid1}>
+                  <Card
+                    className={styles.big}
+                    title={group.cards[0].title}
+                    description={group.cards[0].short_description}
+                    tags={group.cards[0].tags}
+                    image={group.cards[0].image}
+                    slug={group.cards[0].slug}
+                  />
+                </div>
+              );
+            }
+
+            if (group.type === 'extrasmallandMedium') {
+              return (
+                <div key={`extrasmall-medium-${groupIndex}`} className={styles.grid2}>
+                  {group.cards[0] && (
+                    <Card
+                      className={styles.extrasmall}
+                      title={group.cards[0].title}
+                      description={group.cards[0].short_description}
+                      tags={group.cards[0].tags}
+                      image={group.cards[0].image}
+                      slug={group.cards[0].slug}
+                    />
+                  )}
+                  {group.cards[1] && (
+                    <Card
+                      className={styles.medium}
+                      title={group.cards[1].title}
+                      description={group.cards[1].short_description}
+                      tags={group.cards[1].tags}
+                      image={group.cards[1].image}
+                      slug={group.cards[1].slug}
+                    />
+                  )}
+                </div>
+              );
+            }
+
+            if (group.type === 'smallCards') {
+              return (
+                <div key={`small-cards-${groupIndex}`} className={styles.grid3}>
+                  {group.cards.map((project, index) => {
+                    let cardSize = "small";
+                    if (index === 1) cardSize = "extrasmall";
+                    
+                    return (
+                      <Card
+                        key={`small-${groupIndex}-${index}`}
+                        className={styles[cardSize]}
+                        title={project.title}
+                        description={project.short_description}
+                        tags={project.tags}
+                        image={project.image}
+                        slug={project.slug}
+                      />
+                    );
+                  })}
+                </div>
+              );
+            }
+
+            if (group.type === 'mediumExtraSmall') {
+              return (
+                <div key={`medium-extrasmall-${groupIndex}`} className={styles.grid4}>
+                  {group.cards[0] && (
+                    <Card
+                      className={styles.medium}
+                      title={group.cards[0].title}
+                      description={group.cards[0].short_description}
+                      tags={group.cards[0].tags}
+                      image={group.cards[0].image}
+                      slug={group.cards[0].slug}
+                    />
+                  )}
+                  {group.cards[1] && (
+                    <Card
+                      className={styles.extrasmall}
+                      title={group.cards[1].title}
+                      description={group.cards[1].short_description}
+                      tags={group.cards[1].tags}
+                      image={group.cards[1].image}
+                      slug={group.cards[1].slug}
+                    />
+                  )}
+                </div>
+              );
+            }
+
+            if (group.type === 'finalGroup') {
+              return (
+                <div key={`final-${groupIndex}`} className={styles.grid5}>
+                  {group.includeTalk ? (
+                    <div className={styles.extrasmall}>
+                      <Talk works={false} />
+                    </div>
+                  ) : (
+                    group.cards[0] && (
+                      <Card
+                        className={styles.extrasmall}
+                        title={group.cards[0].title}
+                        description={group.cards[0].short_description}
+                        tags={group.cards[0].tags}
+                        image={group.cards[0].image}
+                        slug={group.cards[0].slug}
+                      />
+                    )
+                  )}
+                  {group.includeTalk ? (
+                    group.cards[0] && (
+                      <Card
+                        className={styles.small}
+                        title={group.cards[0].title}
+                        description={group.cards[0].short_description}
+                        tags={group.cards[0].tags}
+                        image={group.cards[0].image}
+                        slug={group.cards[0].slug}
+                      />
+                    )
+                  ) : (
+                    group.cards[1] && (
+                      <Card
+                        className={styles.small}
+                        title={group.cards[1].title}
+                        description={group.cards[1].short_description}
+                        tags={group.cards[1].tags}
+                        image={group.cards[1].image}
+                        slug={group.cards[1].slug}
+                      />
+                    )
+                  )}
+                  {group.includeTalk ? (
+                    group.cards[1] && (
+                      <Card
+                        className={styles.small}
+                        title={group.cards[1].title}
+                        description={group.cards[1].short_description}
+                        tags={group.cards[1].tags}
+                        image={group.cards[1].image}
+                        slug={group.cards[1].slug}
+                      />
+                    )
+                  ) : (
+                    group.cards[2] && (
+                      <Card
+                        className={styles.small}
+                        title={group.cards[2].title}
+                        description={group.cards[2].short_description}
+                        tags={group.cards[2].tags}
+                        image={group.cards[2].image}
+                        slug={group.cards[2].slug}
+                      />
+                    )
+                  )}
+                </div>
+              );
+            }
+
+            return null;
+          })}
         </div>
       </section>
       {isLoading && (

@@ -10,7 +10,7 @@ import {
 } from '@/components/TextStaggerHover/TextStaggerHover';
 import { useSoundContext } from '@/contexts/SoundContext';
 
-const Talk = () => {
+const Talk = ({works=true}) => {
   const { playClickSound } = useSoundContext();
   const [primaryButtonHovered, setPrimaryButtonHovered] = useState(false);
   const [secondaryButtonHovered, setSecondaryButtonHovered] = useState(false);
@@ -48,7 +48,7 @@ const Talk = () => {
               <TextStaggerHoverHidden animation="bottom" text="LET'S CONTACT" />
             </TextStaggerHover>
           </Link>
-          <Link 
+          {works && <Link
             href="/case-studies" 
             className={styles.secondaryButton}
             onMouseEnter={() => {
@@ -65,7 +65,7 @@ const Talk = () => {
               <TextStaggerHoverActive animation="top" text="SEE ALL WORKS" />
               <TextStaggerHoverHidden animation="bottom" text="SEE ALL WORKS" />
             </TextStaggerHover>
-          </Link>
+          </Link>}
         </div>
       </div>
     </div>

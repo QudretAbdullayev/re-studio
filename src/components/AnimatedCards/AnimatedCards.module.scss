@@ -124,51 +124,15 @@
   100% { transform: translate(0, 0); }
 }
 
-.position0 {
-  left: 10%;
-  top: 12%;
-  animation: randomFloat1 45s ease infinite;
-  animation-delay: 0s;
-}
-
-.position1 {
-  right: 2%;
-  bottom: 35%;
-  animation: randomFloat2 52s ease infinite;
-  animation-delay: 0s;
-}
-
-.position2 {
-  left: 7%;
-  bottom: 13%;
-  animation: randomFloat3 38s ease infinite;
-  animation-delay: 0s;
-}
-
-.position3 {
-  right: 24%;
-  top: 5%;
-  animation: randomFloat4 48s ease infinite;
-  animation-delay: 0s;
-}
-
-.position4 {
-  right: 22%;
-  bottom: 5%;
-  animation: randomFloat5 55s ease infinite;
-  animation-delay: 0s;
-}
-
-
 .extrasmall {
-  width: 358rem;
-  height: 260rem;
+  width: 100%;
+  height: 100%;
   
 }
 
 .extraextrasmall {
-  width: 230rem;
-  height: 176rem;
+  width: 100%;
+  height: 100%;
   
 }
 
@@ -182,14 +146,77 @@
   }
 }
 
-@media screen and (max-height: 700px) {
-  .extrasmall {
+.position0 {
+  left: 10%;
+  top: 12%;
+  animation: randomFloat1 45s ease infinite;
+  animation-delay: 0s;
+  width: 358rem;
+  height: 260rem;
+  @media screen and (max-width: 700px) {
+    top: 112rem;
+    left: -70rem;
     width: 230rem;
     height: 176rem;
   }
-  
-  .extraextrasmall {
+}
+
+.position1 {
+  right: 2%;
+  bottom: 35%;
+  animation: randomFloat2 52s ease infinite;
+  animation-delay: 0s;
+  width: 358rem;
+  height: 260rem;
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
+
+}
+
+.position2 {
+  left: 7%;
+  bottom: 13%;
+  animation: randomFloat3 38s ease infinite;
+  animation-delay: 0s;
+  width: 230rem;
+  height: 176rem;
+  @media screen and (max-width: 700px) {
+    bottom: initial;
+    bottom: 91rem;
+    left: -45rem;
+    width: 181rem;
+    height: 138rem;
+  }
+}
+
+.position3 {
+  right: 24%;
+  top: 5%;
+  animation: randomFloat4 48s ease infinite;
+  animation-delay: 0s;
+  width: 230rem;
+  height: 176rem;
+  @media screen and (max-width: 700px) {
+    top: 78rem;
+    right: -89rem;
     width: 230rem;
     height: 176rem;
+  }
+}
+
+.position4 {
+  right: 22%;
+  bottom: 5%;
+  animation: randomFloat5 55s ease infinite;
+  animation-delay: 0s;
+  width: 230rem;
+  height: 176rem;
+  @media screen and (max-width: 700px) {
+    bottom: initial;
+    bottom: 33rem;
+    right: -60rem;
+    width: 206rem;
+    height: 159rem;
   }
 }

@@ -3,36 +3,85 @@
 .projectsPage{
     margin-bottom: 40rem;
 }
+
 .container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 80rem 24rem;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+}
+
+/* Grid 1: 1 column (100%) - Big card */
+.grid1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 80rem 24rem;
+}
+
+/* Grid 2: 2 columns (485rem + auto) - Extrasmall + Medium */
+.grid2 {
+  display: grid;
+  grid-template-columns: 485rem 1fr;
+  gap: 80rem 24rem;
+}
+
+/* Grid 3: 3 equal columns - Small cards */
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 80rem 24rem;
+}
+
+/* Grid 4: 2 columns - Medium + ExtraSmall */
+.grid4 {
+  display: grid;
+  grid-template-columns: 1fr 485rem;
+  gap: 80rem 24rem;
+}
+
+/* Grid 5: 4 columns - Talk + ExtraSmall + Small + Small */
+.grid5 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 80rem 24rem;
 }
 
 .big{
-    width: 1504rem;
+    width: 100%;
     height: 768rem;
 }
 
 .medium {
-  width: 995rem;
+  width: 100%;
   height: 744rem;
 }
 
 .small {
-  width: 485.33rem;
+  width: 100%;
   height: 528rem;
 }
 
 .extrasmall {
-  width: 485rem;
+  width: 100%;
   height: 376rem;
 }
 
 @media screen and (max-width: 700px) {
-    .container{
-        gap: 24rem;
-    }
+  .container{
+    gap: 24rem;
+  }
+
+  /* Mobile: All grids become single column */
+  .grid1,
+  .grid2,
+  .grid3,
+  .grid4,
+  .grid5 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24rem;
+  }
+
   .big,
   .medium,
   .small,
