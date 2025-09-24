@@ -1,7 +1,7 @@
 @use "@/assets/styles/abstracts" as *;
 
 .big{
-  width: 1504rem;
+  width: 100%;
   height: 768rem;
   margin-bottom: 120rem;
   @media screen and (max-width: 700px) {
@@ -14,11 +14,10 @@
 .categorySection {
   display: grid;
   grid-template-columns: auto;
-  width: 100%;
   padding-bottom: 80rem;
   border-bottom: 1rem solid rgba($background-tones-white, 0.12);
   margin-bottom: 80rem;
-  width: 1504rem;
+  width: 100%;
   &:last-child {
     margin-bottom: 0;
     padding-bottom: 0;
