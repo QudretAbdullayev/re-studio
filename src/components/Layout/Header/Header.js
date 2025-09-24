@@ -201,7 +201,7 @@ export default function Header({ data, footerResults }) {
 
         <div className={styles.buttons}>
           <button
-            className={`${cases ? styles.soundBlack : styles.sound}`}
+            className={`${cases ? styles.soundBlack : styles.sound} ${isSoundEnabled ? styles.contracting : styles.expanding}`}
             onClick={() => {
               playMobileClickSound(playClickSound);
               toggleSound();
