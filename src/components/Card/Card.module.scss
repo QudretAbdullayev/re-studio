@@ -26,7 +26,11 @@
     z-index: 1;
     pointer-events: none;
   }
-
+  &:hover {
+    &::before {
+      background: #00000033;
+    }
+  }
   .imageBackground {
     position: relative;
     width: 100%;
