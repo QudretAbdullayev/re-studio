@@ -46,7 +46,7 @@ export default function Menu({ onClose, isClosing, footerResults, headerResults 
               onClick={handleLinkClick}
               onMouseEnter={playClickSound}
             >
-              {nav.title.toUpperCase()}
+              <span className={styles.segmentTabColor}>{nav.title.toUpperCase()}</span>
             </Link>
           ))}
         </div>
