@@ -45,12 +45,22 @@
   height: 744rem;
 }
 
+.mediumTalk {
+  width: 100%;
+  height: 744rem;
+}
+
 .small {
   width: 100%;
   height: 528rem;
 }
 
 .extrasmall {
+  width: 100%;
+  height: 376rem;
+}
+
+.extrasmallTalk {
   width: 100%;
   height: 376rem;
 }
@@ -76,5 +86,10 @@
   .extrasmall {
     width: 370rem;
     height: 424rem;
+  }
+  .mediumTalk,
+  .extrasmallTalk {
+    width: 370rem;
+    height: 292rem;
   }
 }

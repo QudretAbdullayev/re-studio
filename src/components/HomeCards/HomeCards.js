@@ -149,7 +149,7 @@ const HomeCards = ({cards}) => {
                   />
                 ) : (
                   group.includeTalk && (
-                    <div className={styles.medium}>
+                    <div className={styles.mediumTalk}>
                       <Talk />
                     </div>
                   )
@@ -179,14 +179,14 @@ const HomeCards = ({cards}) => {
                     );
                   })}
                   {group.includeTalk && (
-                    <div className={styles.extrasmall}>
+                    <div className={styles.extrasmallTalk}>
                       <Talk />
                     </div>
                   )}
                 </div>
                 {group.addTalkAfter && (
                   <div className={styles.grid4}>
-                    <div className={styles.extrasmall}>
+                    <div className={styles.extrasmallTalk}>
                       <Talk />
                     </div>
                   </div>
@@ -210,7 +210,7 @@ const HomeCards = ({cards}) => {
                   />
                 ))}
                 {group.includeTalk ? (
-                  <div className={styles.extrasmall}>
+                  <div className={styles.extrasmallTalk}>
                     <Talk />
                   </div>
                 ) : (
