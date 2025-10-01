@@ -274,7 +274,7 @@ const ProjectsPage = ({ caseStudies, data }) => {
               return (
                 <div key={`final-${groupIndex}`} className={styles.grid5}>
                   {group.includeTalk ? (
-                    <div className={styles.extrasmall}>
+                    <div className={styles.extrasmallTalk}>
                       <Talk works={false} />
                     </div>
                   ) : (
