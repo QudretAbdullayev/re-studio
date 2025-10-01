@@ -531,7 +531,13 @@
         padding: 12rem;
         height: 40rem;
         width: 40rem;
-
+        &.expanding {
+          animation: initial;
+        }
+  
+        &.contracting {
+          animation: initial;
+        }
         .soundContent {
           .charClass {
             display: none;
@@ -584,7 +590,13 @@
         padding: 12rem;
         height: 40rem;
         width: 40rem;
-
+        &.expanding {
+          animation: initial;
+        }
+  
+        &.contracting {
+          animation: initial;
+        }
         .soundContent {
           .charClass {
             display: none;
