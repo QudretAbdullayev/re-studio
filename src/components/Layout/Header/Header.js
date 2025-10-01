@@ -22,6 +22,7 @@ export default function Header({ data, footerResults }) {
   const [applyHovered, setApplyHovered] = useState(false);
   const [tabHovered, setTabHovered] = useState(null);
   const [indicatorStyle, setIndicatorStyle] = useState({});
+  const [hasImageOrComponent, setHasImageOrComponent] = useState(false);
   const pathname = usePathname();
   const {
     playClickSound,
@@ -41,7 +42,7 @@ export default function Header({ data, footerResults }) {
   const navigations = safeData.navigations || [];
 
   const cases = pathname.startsWith("/case-studies/") && window.innerWidth > 700
-  console.log(cases, pathname)
+  const shouldUseBlackNav = cases && hasImageOrComponent
   const toggleMenu = () => {
     if (menuOpen) {
       setMenuClosing(true);
@@ -65,6 +66,67 @@ export default function Header({ data, footerResults }) {
       document.body.style.overflow = "unset";
     };
   }, [menuOpen]);
+
+  useEffect(() => {
+    const checkForImageOrComponent = () => {
+      if (!pathname.startsWith("/case-studies/") || window.innerWidth <= 700) {
+        return;
+      }
+
+      const header = document.querySelector(`.${styles.header}`);
+      if (!header) return;
+
+      const headerRect = header.getBoundingClientRect();
+      const centerY = headerRect.bottom + 48; // Header'ın altından 70px aşağı
+      
+      // Header'ın altındaki alanı kontrol et
+      const elementBelow = document.elementFromPoint(window.innerWidth / 2, centerY);
+      
+      if (elementBelow) {
+        // Element'in kendisi veya parent'larında img, video, canvas, component var mı kontrol et
+        let currentElement = elementBelow;
+        let found = false;
+        
+        // 5 seviye yukarı kontrol et
+        for (let i = 0; i < 5 && currentElement && currentElement !== document.body; i++) {
+          const tagName = currentElement.tagName?.toLowerCase();
+          const className = currentElement.className || '';
+          
+          // Image, video, canvas veya component class'ları kontrol et
+          if (tagName === 'img' || 
+              tagName === 'video' || 
+              tagName === 'canvas' ||
+              className.includes('component') ||
+              className.includes('image') ||
+              className.includes('hero') ||
+              className.includes('banner') ||
+              className.includes('gallery')) {
+            found = true;
+            break;
+          }
+          
+          currentElement = currentElement.parentElement;
+        }
+        
+        setHasImageOrComponent(found);
+      }
+    };
+
+    const handleScroll = () => {
+      checkForImageOrComponent();
+    };
+
+    // Initial check
+    checkForImageOrComponent();
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [pathname]);
 
   React.useEffect(() => {
     if (!navigations || navigations.length === 0) return;
@@ -146,7 +208,7 @@ export default function Header({ data, footerResults }) {
           <SafeImage src={"/re.svg"} fill alt="Re Studio" priority />
         </Link>
 
-        <nav className={` ${cases ? styles.navBlack : styles.nav}`}>
+        <nav className={` ${shouldUseBlackNav ? styles.navBlack : styles.nav}`}>
           <div
             className={styles.segment}
             ref={segmentRef}
@@ -201,7 +263,7 @@ export default function Header({ data, footerResults }) {
 
         <div className={styles.buttons}>
           <button
-            className={`${cases ? styles.soundBlack : styles.sound} ${isSoundEnabled ? styles.contracting : styles.expanding}`}
+            className={`${shouldUseBlackNav ? styles.soundBlack : styles.sound} ${isSoundEnabled ? styles.contracting : styles.expanding}`}
             onClick={() => {
               playMobileClickSound(playClickSound);
               toggleSound();
@@ -251,7 +313,7 @@ export default function Header({ data, footerResults }) {
           </button>
           <Link
             href="/apply"
-            className={`${cases ? styles.applyBlack : styles.apply}`}
+            className={`${shouldUseBlackNav ? styles.applyBlack : styles.apply}`}
             onClick={() => {
               playMobileClickSound(playClickSound);
             }}
